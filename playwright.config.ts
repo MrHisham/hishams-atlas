@@ -1,0 +1,2 @@
+import {defineConfig} from '@playwright/test';
+export default defineConfig({testDir:'tests/e2e',timeout:300000,expect:{timeout:20000},workers:1,use:{baseURL:process.env.ATLAS_BASE_URL||'http://127.0.0.1:5175',viewport:{width:1440,height:900},launchOptions:{executablePath:process.env.ATLAS_BROWSER||'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',args:[]},screenshot:'only-on-failure'},reporter:[['list'],['html',{open:'never',outputFolder:'docs/test-report'}]]});

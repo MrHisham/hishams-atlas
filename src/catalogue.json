@@ -1,0 +1,502 @@
+[
+  {
+    "id": "ath-1",
+    "title": "Introduction to Algorithms",
+    "subtitle": "",
+    "collection": "STEM & Computing",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-2",
+    "title": "The Cartographer’s Lantern",
+    "subtitle": "",
+    "collection": "General Reading",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-3",
+    "title": "Small Hours in Winter",
+    "subtitle": "",
+    "collection": "General Reading",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-4",
+    "title": "Ross & Wilson Anatomy and Physiology in Health and Illness",
+    "subtitle": "",
+    "collection": "Biomedical Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-5",
+    "title": "Harper’s Illustrated Biochemistry",
+    "subtitle": "",
+    "collection": "Biomedical Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-6",
+    "title": "Robbins Basic Pathology",
+    "subtitle": "",
+    "collection": "Biomedical Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-7",
+    "title": "Foye’s Principles of Medicinal Chemistry",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-8",
+    "title": "Aulton’s Pharmaceutics: The Design and Manufacture of Medicines",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-9",
+    "title": "Rang & Dale’s Pharmacology",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-10",
+    "title": "Applied Therapeutics: The Clinical Use of Drugs",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-11",
+    "title": "Shargel and Yu’s Applied Biopharmaceutics & Pharmacokinetics",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-12",
+    "title": "Essentials of Pharmacoeconomics",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-13",
+    "title": "British National Formulary",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-14",
+    "title": "Calculus: Early Transcendentals",
+    "subtitle": "",
+    "collection": "STEM & Computing",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-15",
+    "title": "Campbell Biology",
+    "subtitle": "",
+    "collection": "STEM & Computing",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-16",
+    "title": "University Physics",
+    "subtitle": "",
+    "collection": "STEM & Computing",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-17",
+    "title": "Guyton and Hall Textbook of Medical Physiology",
+    "subtitle": "",
+    "collection": "Biomedical Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-18",
+    "title": "Lippincott Illustrated Reviews: Biochemistry",
+    "subtitle": "",
+    "collection": "Biomedical Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-19",
+    "title": "McCance & Huether’s Pathophysiology",
+    "subtitle": "",
+    "collection": "Biomedical Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-20",
+    "title": "Wilson and Gisvold’s Textbook of Organic Medicinal and Pharmaceutical Chemistry",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-21",
+    "title": "Ansel’s Pharmaceutical Dosage Forms and Drug Delivery Systems",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-22",
+    "title": "Trease and Evans Pharmacognosy",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-23",
+    "title": "Drug Information: A Guide for Pharmacists",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-24",
+    "title": "Casarett & Doull’s Toxicology: The Basic Science of Poisons",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-25",
+    "title": "Pharmacoepidemiology",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-26",
+    "title": "Martindale: The Complete Drug Reference",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-27",
+    "title": "Salt & Stardust",
+    "subtitle": "",
+    "collection": "General Reading",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-28",
+    "title": "The Quiet Architecture",
+    "subtitle": "",
+    "collection": "General Reading",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-29",
+    "title": "Letters from Alder House",
+    "subtitle": "",
+    "collection": "General Reading",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-30",
+    "title": "Mosslight",
+    "subtitle": "",
+    "collection": "General Reading",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-31",
+    "title": "Prescott’s Microbiology",
+    "subtitle": "",
+    "collection": "STEM & Computing",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-32",
+    "title": "Organic Chemistry",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-33",
+    "title": "Vogel’s Textbook of Quantitative Chemical Analysis",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-34",
+    "title": "The Theory and Practice of Industrial Pharmacy",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-35",
+    "title": "Clinical Pharmacy and Therapeutics",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-36",
+    "title": "Community Pharmacy: Symptoms, Diagnosis and Treatment",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-37",
+    "title": "Pharmaceutical Analysis",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-38",
+    "title": "Basic & Clinical Biostatistics",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-39",
+    "title": "A Field Guide to Memory",
+    "subtitle": "",
+    "collection": "General Reading",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-40",
+    "title": "The Sea Between Lines",
+    "subtitle": "",
+    "collection": "General Reading",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-41",
+    "title": "Borrowed Light",
+    "subtitle": "",
+    "collection": "General Reading",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-42",
+    "title": "The Patient Earth",
+    "subtitle": "",
+    "collection": "General Reading",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-43",
+    "title": "Medical Microbiology",
+    "subtitle": "",
+    "collection": "STEM & Computing",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-44",
+    "title": "Organic Chemistry",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-45",
+    "title": "Martin’s Physical Pharmacy and Pharmaceutical Sciences",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-46",
+    "title": "Katzung’s Basic & Clinical Pharmacology",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-47",
+    "title": "DiPiro’s Pharmacotherapy: A Pathophysiologic Approach",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-48",
+    "title": "Hospital Pharmacy",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-49",
+    "title": "Principles of Instrumental Analysis",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  },
+  {
+    "id": "ath-50",
+    "title": "How to Read a Paper",
+    "subtitle": "",
+    "collection": "Pharmacy & Health Sciences",
+    "type": "Book",
+    "url": "",
+    "notes": "Imported from Athenaeum saved bookshelf · original title only",
+    "progress": 0
+  }
+]

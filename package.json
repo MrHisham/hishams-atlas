@@ -1,0 +1,31 @@
+{
+  "name": "hishams-atlas",
+  "version": "6.0.0-alpha.6",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "vitest run",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "three": "0.180.0",
+    "dexie": "4.2.1",
+    "pdfjs-dist": "5.4.296",
+    "zod": "4.1.12",
+    "lucide-react": "0.548.0"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "vite": "7.1.12",
+    "vitest": "3.2.4",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@types/three": "0.180.0",
+    "@playwright/test": "1.56.1"
+  }
+}
