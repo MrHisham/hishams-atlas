@@ -80,3 +80,7 @@ The twelve plant packets in the institute specification are review candidates, w
 ## License and credits
 
 The existing [MIT license](LICENSE) covers newly created application source. Third-party packages and supplied/imported material retain their own terms. See [asset provenance](docs/ASSETS.md) and `docs/licenses/`. Clinical references are external sources, not endorsements of this project.
+
+## Publish to GitHub Pages
+
+Choose **GitHub Actions** as the Pages source and commit the included `.github/workflows/deploy.yml`. The workflow builds the app with portable asset paths and publishes `dist/`. See [deployment instructions](docs/GITHUB-PAGES.md).
