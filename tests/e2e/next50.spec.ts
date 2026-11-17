@@ -1,0 +1,51 @@
+import {test,expect} from '@playwright/test';
+import {moduleQuestions} from '../../src/curriculum';
+import fs from 'node:fs/promises';
+
+test('next 50 collection, ten modules, new practice and recognition backup preserve Essential 50 progress',async({page})=>{
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('/?graphics=Low&motion=off');await expect(page.getByText('Saved on this device',{exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Field book',exact:true}).click();
+ await page.getByLabel('Plant collection filter').selectOption('essential');await expect(page.locator('.student-plant-card')).toHaveCount(50);
+ await expect(page.locator('.student-plant-card').first()).toContainText('Chamomile');
+ await page.getByRole('button',{name:'Fifteen learning modules',exact:true}).click();
+ await page.getByRole('button',{name:'Practice Everyday medicinal plants',exact:true}).click();
+ const old=moduleQuestions('everyday')[0];await page.locator('.answer-options').getByRole('button',{name:old.answer,exact:false}).click();
+ await page.getByRole('button',{name:'All 150 plants',exact:true}).click();
+ await page.getByLabel('Plant collection filter').selectOption('next');await expect(page.locator('.student-plant-card')).toHaveCount(50);
+ await expect(page.locator('.student-plant-card').first()).toContainText('Lemon balm');await expect(page.locator('.student-plant-card').last()).toContainText('Ipecac');
+ await page.getByLabel('Learning module filter').selectOption('gastrorespiratory');await expect(page.locator('.student-plant-card')).toHaveCount(10);
+ await page.getByRole('button',{name:'Open Ivy leaf profile',exact:true}).click();await expect(page.locator('.profile-section')).toHaveCount(7);
+ await expect(page.locator('#profile-clinical')).toContainText('well-established');
+ await page.getByRole('button',{name:'All 150 plants',exact:true}).click();
+ await page.getByLabel('Learning module filter').selectOption('toxicognosy');await expect(page.locator('.student-plant-card')).toHaveCount(10);
+ await page.getByRole('button',{name:'Open Sweet wormwood profile',exact:true}).click();
+ await expect(page.getByText('Pharmacology study · recognition only',{exact:true})).toBeVisible();
+ await expect(page.getByRole('button',{name:'Select cultivation bed'})).toHaveCount(0);
+ await page.getByLabel('Botanical note').fill('WHO distinction: plant material and standardized medicines.');
+ await page.getByRole('button',{name:'Record recognition',exact:true}).click();
+ await page.screenshot({path:'docs/next50-recognition.png'});
+ await page.getByRole('button',{name:'All 150 plants',exact:true}).click();
+ await page.getByRole('button',{name:'Fifteen learning modules',exact:true}).click();await expect(page.locator('.module-number').nth(9)).toHaveText('10');
+ await page.getByRole('button',{name:'Practice Pharmaceutical Drug Sources & Toxicognosy',exact:true}).click();
+ for(const q of moduleQuestions('toxicognosy')){
+  await expect(page.getByRole('heading',{name:q.prompt,exact:true})).toBeVisible();
+  await page.locator('.answer-options').getByRole('button',{name:q.answer,exact:false}).click();
+  await page.getByRole('button',{name:q.id.endsWith(':case')?'See progress':'Next question →',exact:true}).click();
+ }
+ await expect(page.locator('.practice-results>strong')).toHaveText('11 / 11');
+ await page.getByRole('button',{name:'Settings',exact:true}).click();
+ const download=page.waitForEvent('download');await page.getByRole('button',{name:'Export full backup'}).click();await(await download).saveAs('docs/next50-test-backup.json');
+ const backup=JSON.parse(await fs.readFile('docs/next50-test-backup.json','utf8'));
+ expect(backup.state.learning.answers[old.id].correct).toBe(true);expect(Object.keys(backup.state.learning.answers)).toHaveLength(12);
+ expect(backup.state.specimens[0].species).toBe('sweetwormwood');expect(backup.state.beds).toHaveLength(8);
+ await page.locator('input[type=file][accept="application/json"]').setInputFiles('docs/next50-test-backup.json');await page.getByRole('button',{name:'Verify and restore'}).click();
+ await expect(page.getByText('Backup verified and restored.',{exact:true})).toBeVisible();await page.reload();
+ await expect(page.getByText('Saved on this device',{exact:true})).toBeVisible();await page.getByRole('button',{name:'Field book',exact:true}).click();
+ await page.getByRole('button',{name:'Fifteen learning modules',exact:true}).click();await expect(page.locator('.learning-module').first()).toContainText('1 / 11 current practice answers correct');
+ await expect(page.locator('.learning-module').nth(9)).toContainText('11 / 11 current practice answers correct');
+ await page.getByRole('button',{name:'Sweet wormwood',exact:true}).click();await expect(page.getByLabel('Botanical note')).toHaveValue('WHO distinction: plant material and standardized medicines.');
+ await page.setViewportSize({width:390,height:844});await page.getByRole('button',{name:'All 150 plants',exact:true}).click();
+ await page.getByLabel('Plant collection filter').selectOption('next');await page.screenshot({path:'docs/next50-mobile.png'});
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);expect(errors).toEqual([]);
+});

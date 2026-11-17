@@ -1,0 +1,772 @@
+[
+  {
+    "id": "everyday:chamomile",
+    "plantId": "chamomile",
+    "prompt": "Which scientific name is listed for Chamomile?",
+    "answer": "Matricaria chamomilla",
+    "options": [
+      "Mentha × piperita",
+      "Zingiber officinale",
+      "Curcuma longa",
+      "Matricaria chamomilla"
+    ],
+    "explanation": "Chamomile is listed as Matricaria chamomilla. Names follow the supplied curriculum; full taxonomic authentication is a separate task.",
+    "source": "https://www.nccih.nih.gov/health/chamomile"
+  },
+  {
+    "id": "everyday:peppermint",
+    "plantId": "peppermint",
+    "prompt": "Which scientific name is listed for Peppermint?",
+    "answer": "Mentha × piperita",
+    "options": [
+      "Zingiber officinale",
+      "Curcuma longa",
+      "Mentha × piperita",
+      "Matricaria chamomilla"
+    ],
+    "explanation": "Peppermint is listed as Mentha × piperita. Names follow the supplied curriculum; full taxonomic authentication is a separate task.",
+    "source": "https://www.nccih.nih.gov/health/peppermint-oil"
+  },
+  {
+    "id": "everyday:ginger",
+    "plantId": "ginger",
+    "prompt": "Which scientific name is listed for Ginger?",
+    "answer": "Zingiber officinale",
+    "options": [
+      "Curcuma longa",
+      "Zingiber officinale",
+      "Matricaria chamomilla",
+      "Mentha × piperita"
+    ],
+    "explanation": "Ginger is listed as Zingiber officinale. Names follow the supplied curriculum; full taxonomic authentication is a separate task.",
+    "source": "https://www.nccih.nih.gov/health/ginger"
+  },
+  {
+    "id": "everyday:turmeric",
+    "plantId": "turmeric",
+    "prompt": "Which scientific name is listed for Turmeric?",
+    "answer": "Curcuma longa",
+    "options": [
+      "Curcuma longa",
+      "Matricaria chamomilla",
+      "Mentha × piperita",
+      "Zingiber officinale"
+    ],
+    "explanation": "Turmeric is listed as Curcuma longa. Names follow the supplied curriculum; full taxonomic authentication is a separate task.",
+    "source": "https://www.nccih.nih.gov/health/turmeric"
+  },
+  {
+    "id": "everyday:garlic",
+    "plantId": "garlic",
+    "prompt": "Which scientific name is listed for Garlic?",
+    "answer": "Allium sativum",
+    "options": [
+      "Matricaria chamomilla",
+      "Mentha × piperita",
+      "Zingiber officinale",
+      "Allium sativum"
+    ],
+    "explanation": "Garlic is listed as Allium sativum. Names follow the supplied curriculum; full taxonomic authentication is a separate task.",
+    "source": "https://www.nccih.nih.gov/health/garlic"
+  },
+  {
+    "id": "everyday:lavender",
+    "plantId": "lavender",
+    "prompt": "Which scientific name is listed for Lavender?",
+    "answer": "Lavandula angustifolia",
+    "options": [
+      "Mentha × piperita",
+      "Zingiber officinale",
+      "Lavandula angustifolia",
+      "Matricaria chamomilla"
+    ],
+    "explanation": "Lavender is listed as Lavandula angustifolia. Names follow the supplied curriculum; full taxonomic authentication is a separate task.",
+    "source": "https://www.nccih.nih.gov/health/lavender"
+  },
+  {
+    "id": "everyday:thyme",
+    "plantId": "thyme",
+    "prompt": "Which scientific name is listed for Thyme?",
+    "answer": "Thymus vulgaris",
+    "options": [
+      "Zingiber officinale",
+      "Thymus vulgaris",
+      "Matricaria chamomilla",
+      "Mentha × piperita"
+    ],
+    "explanation": "Thyme is listed as Thymus vulgaris. Names follow the supplied curriculum; full taxonomic authentication is a separate task.",
+    "source": "https://www.ema.europa.eu/en/medicines/herbal/thymi-herba"
+  },
+  {
+    "id": "everyday:fennel",
+    "plantId": "fennel",
+    "prompt": "Which scientific name is listed for Fennel?",
+    "answer": "Foeniculum vulgare",
+    "options": [
+      "Matricaria chamomilla",
+      "Mentha × piperita",
+      "Zingiber officinale",
+      "Foeniculum vulgare"
+    ],
+    "explanation": "Fennel is listed as Foeniculum vulgare. Names follow the supplied curriculum; full taxonomic authentication is a separate task.",
+    "source": "https://www.ema.europa.eu/en/medicines/herbal/foeniculi-dulcis-fructus"
+  },
+  {
+    "id": "everyday:rosemary",
+    "plantId": "rosemary",
+    "prompt": "Which scientific name is listed for Rosemary?",
+    "answer": "Salvia rosmarinus",
+    "options": [
+      "Zingiber officinale",
+      "Salvia rosmarinus",
+      "Matricaria chamomilla",
+      "Mentha × piperita"
+    ],
+    "explanation": "Rosemary is listed as Salvia rosmarinus. Names follow the supplied curriculum; full taxonomic authentication is a separate task.",
+    "source": "https://www.ema.europa.eu/en/medicines/herbal/rosmarini-folium"
+  },
+  {
+    "id": "everyday:eucalyptus",
+    "plantId": "eucalyptus",
+    "prompt": "Which scientific name is listed for Eucalyptus?",
+    "answer": "Eucalyptus globulus",
+    "options": [
+      "Mentha × piperita",
+      "Zingiber officinale",
+      "Eucalyptus globulus",
+      "Matricaria chamomilla"
+    ],
+    "explanation": "Eucalyptus is listed as Eucalyptus globulus. Names follow the supplied curriculum; full taxonomic authentication is a separate task.",
+    "source": "https://www.ema.europa.eu/en/medicines/herbal/eucalypti-folium"
+  },
+  {
+    "plantId": "peppermint",
+    "prompt": "A paper tests a specific peppermint-oil capsule. What can you conclude about peppermint tea?",
+    "options": [
+      "The plant name alone proves equivalence",
+      "Every mint product is the same intervention",
+      "It must have the same clinical effect",
+      "Evidence must be checked for the exact preparation"
+    ],
+    "answer": "Evidence must be checked for the exact preparation",
+    "explanation": "Preparation, route and clinical outcome matter. Evidence for a particular oil product cannot automatically be transferred to tea.",
+    "source": "https://www.nccih.nih.gov/health/peppermint-oil",
+    "id": "everyday:case"
+  },
+  {
+    "id": "foundations:senna",
+    "plantId": "senna",
+    "prompt": "Which marker or study topic is selected for Senna?",
+    "answer": "Sennosides",
+    "options": [
+      "Sennosides",
+      "Mucilage",
+      "Cinnamaldehyde study topic",
+      "Eugenol"
+    ],
+    "explanation": "The selected learning focus is “Sennosides, stimulant laxatives”. Marker matching is a curriculum exercise, not evidence of clinical benefit or an assay result.",
+    "source": "https://www.ema.europa.eu/en/medicines/herbal/sennae-folium"
+  },
+  {
+    "id": "foundations:psyllium",
+    "plantId": "psyllium",
+    "prompt": "Which marker or study topic is selected for Psyllium?",
+    "answer": "Mucilage",
+    "options": [
+      "Sennosides",
+      "Cinnamaldehyde study topic",
+      "Eugenol",
+      "Mucilage"
+    ],
+    "explanation": "The selected learning focus is “Mucilage, bulk-forming laxatives”. Marker matching is a curriculum exercise, not evidence of clinical benefit or an assay result.",
+    "source": "https://www.ema.europa.eu/en/medicines/herbal/plantaginis-ovatae-seminis-tegumentum"
+  },
+  {
+    "id": "foundations:cinnamon",
+    "plantId": "cinnamon",
+    "prompt": "Which marker or study topic is selected for Cinnamon?",
+    "answer": "Cinnamaldehyde study topic",
+    "options": [
+      "Sennosides",
+      "Mucilage",
+      "Eugenol",
+      "Cinnamaldehyde study topic"
+    ],
+    "explanation": "The selected learning focus is “Essential oils, species differentiation”. Marker matching is a curriculum exercise, not evidence of clinical benefit or an assay result.",
+    "source": "https://www.nccih.nih.gov/health/cinnamon"
+  },
+  {
+    "id": "foundations:clove",
+    "plantId": "clove",
+    "prompt": "Which marker or study topic is selected for Clove?",
+    "answer": "Eugenol",
+    "options": [
+      "Mucilage",
+      "Cinnamaldehyde study topic",
+      "Eugenol",
+      "Sennosides"
+    ],
+    "explanation": "The selected learning focus is “Eugenol, phenylpropanoids”. Marker matching is a curriculum exercise, not evidence of clinical benefit or an assay result.",
+    "source": "https://www.ema.europa.eu/en/medicines/herbal/caryophylli-floris-aetheroleum"
+  },
+  {
+    "id": "foundations:greentea",
+    "plantId": "greentea",
+    "prompt": "Which marker or study topic is selected for Green tea?",
+    "answer": "Catechins / caffeine",
+    "options": [
+      "Cinnamaldehyde study topic",
+      "Catechins / caffeine",
+      "Sennosides",
+      "Mucilage"
+    ],
+    "explanation": "The selected learning focus is “Catechins, caffeine, extract toxicity”. Marker matching is a curriculum exercise, not evidence of clinical benefit or an assay result.",
+    "source": "https://www.nccih.nih.gov/health/green-tea"
+  },
+  {
+    "id": "foundations:coffee",
+    "plantId": "coffee",
+    "prompt": "Which marker or study topic is selected for Coffee?",
+    "answer": "Caffeine",
+    "options": [
+      "Caffeine",
+      "Sennosides",
+      "Mucilage",
+      "Cinnamaldehyde study topic"
+    ],
+    "explanation": "The selected learning focus is “Caffeine, methylxanthines”. Marker matching is a curriculum exercise, not evidence of clinical benefit or an assay result.",
+    "source": "https://www.fda.gov/consumers/consumer-updates/spilling-beans-how-much-caffeine-too-much"
+  },
+  {
+    "id": "foundations:cacao",
+    "plantId": "cacao",
+    "prompt": "Which marker or study topic is selected for Cacao?",
+    "answer": "Theobromine",
+    "options": [
+      "Sennosides",
+      "Mucilage",
+      "Cinnamaldehyde study topic",
+      "Theobromine"
+    ],
+    "explanation": "The selected learning focus is “Theobromine, methylxanthines”. Marker matching is a curriculum exercise, not evidence of clinical benefit or an assay result.",
+    "source": "https://www.ncbi.nlm.nih.gov/books/NBK507032/?report=printable"
+  },
+  {
+    "id": "foundations:olive",
+    "plantId": "olive",
+    "prompt": "Which marker or study topic is selected for Olive?",
+    "answer": "Oleuropein study topic",
+    "options": [
+      "Oleuropein study topic",
+      "Sennosides",
+      "Mucilage",
+      "Cinnamaldehyde study topic"
+    ],
+    "explanation": "The selected learning focus is “Oleuropein, phenolic chemistry”. Marker matching is a curriculum exercise, not evidence of clinical benefit or an assay result.",
+    "source": "https://www.ema.europa.eu/en/medicines/herbal/oleae-folium"
+  },
+  {
+    "id": "foundations:artichoke",
+    "plantId": "artichoke",
+    "prompt": "Which marker or study topic is selected for Artichoke?",
+    "answer": "Cynarin study topic",
+    "options": [
+      "Mucilage",
+      "Cinnamaldehyde study topic",
+      "Cynarin study topic",
+      "Sennosides"
+    ],
+    "explanation": "The selected learning focus is “Cynarin, phenolic compounds”. Marker matching is a curriculum exercise, not evidence of clinical benefit or an assay result.",
+    "source": "https://www.ema.europa.eu/en/medicines/herbal/cynarae-folium"
+  },
+  {
+    "id": "foundations:dandelion",
+    "plantId": "dandelion",
+    "prompt": "Which marker or study topic is selected for Dandelion?",
+    "answer": "Constituent identification exercise",
+    "options": [
+      "Cinnamaldehyde study topic",
+      "Constituent identification exercise",
+      "Sennosides",
+      "Mucilage"
+    ],
+    "explanation": "The selected learning focus is “Traditional uses, plant identification”. Marker matching is a curriculum exercise, not evidence of clinical benefit or an assay result.",
+    "source": "https://www.nccih.nih.gov/health/dandelion"
+  },
+  {
+    "plantId": "greentea",
+    "prompt": "Why should a concentrated green-tea extract be assessed separately from the beverage?",
+    "options": [
+      "Concentration and formulation can change exposure and risk",
+      "Food history proves every extract is safe",
+      "A constituent list alone proves clinical efficacy",
+      "All products from one species have identical exposure"
+    ],
+    "answer": "Concentration and formulation can change exposure and risk",
+    "explanation": "NCCIH reports liver injury primarily with extract products. A botanical name is not a complete product specification.",
+    "source": "https://www.nccih.nih.gov/health/green-tea",
+    "id": "foundations:case"
+  },
+  {
+    "id": "clinical:milkthistle",
+    "plantId": "milkthistle",
+    "prompt": "Which evidence summary belongs to the Milk thistle profile?",
+    "answer": "Liver-disease trial results are conflicting or too limited for firm conclusions.",
+    "options": [
+      "Liver-disease trial results are conflicting or too limited for firm conclusions.",
+      "NCCIH finds no conclusive benefit for a health condition; prevention of dementia has not been demonstrated.",
+      "Evidence suggests usefulness for some mild-to-moderate depression settings, but product and comparator matter.",
+      "Evidence for sleep problems is inconsistent; formulations differ."
+    ],
+    "explanation": "Liver-disease trial results are conflicting or too limited for firm conclusions.",
+    "source": "https://www.nccih.nih.gov/health/milk-thistle"
+  },
+  {
+    "id": "clinical:ginkgo",
+    "plantId": "ginkgo",
+    "prompt": "Which evidence summary belongs to the Ginkgo profile?",
+    "answer": "NCCIH finds no conclusive benefit for a health condition; prevention of dementia has not been demonstrated.",
+    "options": [
+      "Liver-disease trial results are conflicting or too limited for firm conclusions.",
+      "Evidence suggests usefulness for some mild-to-moderate depression settings, but product and comparator matter.",
+      "Evidence for sleep problems is inconsistent; formulations differ.",
+      "NCCIH finds no conclusive benefit for a health condition; prevention of dementia has not been demonstrated."
+    ],
+    "explanation": "NCCIH finds no conclusive benefit for a health condition; prevention of dementia has not been demonstrated.",
+    "source": "https://www.nccih.nih.gov/health/ginkgo"
+  },
+  {
+    "id": "clinical:stjohnswort",
+    "plantId": "stjohnswort",
+    "prompt": "Which evidence summary belongs to the St. John’s wort profile?",
+    "answer": "Evidence suggests usefulness for some mild-to-moderate depression settings, but product and comparator matter.",
+    "options": [
+      "NCCIH finds no conclusive benefit for a health condition; prevention of dementia has not been demonstrated.",
+      "Evidence for sleep problems is inconsistent; formulations differ.",
+      "Evidence suggests usefulness for some mild-to-moderate depression settings, but product and comparator matter.",
+      "Liver-disease trial results are conflicting or too limited for firm conclusions."
+    ],
+    "explanation": "Evidence suggests usefulness for some mild-to-moderate depression settings, but product and comparator matter.",
+    "source": "https://www.nccih.nih.gov/health/st-johns-wort"
+  },
+  {
+    "id": "clinical:valerian",
+    "plantId": "valerian",
+    "prompt": "Which evidence summary belongs to the Valerian profile?",
+    "answer": "Evidence for sleep problems is inconsistent; formulations differ.",
+    "options": [
+      "Evidence suggests usefulness for some mild-to-moderate depression settings, but product and comparator matter.",
+      "Evidence for sleep problems is inconsistent; formulations differ.",
+      "Liver-disease trial results are conflicting or too limited for firm conclusions.",
+      "NCCIH finds no conclusive benefit for a health condition; prevention of dementia has not been demonstrated."
+    ],
+    "explanation": "Evidence for sleep problems is inconsistent; formulations differ.",
+    "source": "https://www.nccih.nih.gov/health/valerian"
+  },
+  {
+    "id": "clinical:echinacea",
+    "plantId": "echinacea",
+    "prompt": "Which evidence summary belongs to the Echinacea profile?",
+    "answer": "Products vary by species, part and extraction. Do not treat them as a single intervention.",
+    "options": [
+      "Products vary by species, part and extraction. Do not treat them as a single intervention.",
+      "Liver-disease trial results are conflicting or too limited for firm conclusions.",
+      "NCCIH finds no conclusive benefit for a health condition; prevention of dementia has not been demonstrated.",
+      "Evidence suggests usefulness for some mild-to-moderate depression settings, but product and comparator matter."
+    ],
+    "explanation": "Products vary by species, part and extraction. Do not treat them as a single intervention.",
+    "source": "https://www.nccih.nih.gov/health/echinacea"
+  },
+  {
+    "id": "clinical:ginseng",
+    "plantId": "ginseng",
+    "prompt": "Which evidence summary belongs to the Asian ginseng profile?",
+    "answer": "Studies are often small and variable; not every promoted use is established.",
+    "options": [
+      "Liver-disease trial results are conflicting or too limited for firm conclusions.",
+      "NCCIH finds no conclusive benefit for a health condition; prevention of dementia has not been demonstrated.",
+      "Evidence suggests usefulness for some mild-to-moderate depression settings, but product and comparator matter.",
+      "Studies are often small and variable; not every promoted use is established."
+    ],
+    "explanation": "Studies are often small and variable; not every promoted use is established.",
+    "source": "https://www.nccih.nih.gov/health/asian-ginseng"
+  },
+  {
+    "id": "clinical:ashwagandha",
+    "plantId": "ashwagandha",
+    "prompt": "Which evidence summary belongs to the Ashwagandha profile?",
+    "answer": "Some small studies concern stress and sleep; long-term efficacy and safety are not established.",
+    "options": [
+      "NCCIH finds no conclusive benefit for a health condition; prevention of dementia has not been demonstrated.",
+      "Evidence suggests usefulness for some mild-to-moderate depression settings, but product and comparator matter.",
+      "Some small studies concern stress and sleep; long-term efficacy and safety are not established.",
+      "Liver-disease trial results are conflicting or too limited for firm conclusions."
+    ],
+    "explanation": "Some small studies concern stress and sleep; long-term efficacy and safety are not established.",
+    "source": "https://www.nccih.nih.gov/health/ashwagandha"
+  },
+  {
+    "id": "clinical:fenugreek",
+    "plantId": "fenugreek",
+    "prompt": "Which evidence summary belongs to the Fenugreek profile?",
+    "answer": "Evidence for diabetes and milk supply is limited or mixed; food use is not proof of supplement efficacy.",
+    "options": [
+      "Evidence for diabetes and milk supply is limited or mixed; food use is not proof of supplement efficacy.",
+      "Liver-disease trial results are conflicting or too limited for firm conclusions.",
+      "NCCIH finds no conclusive benefit for a health condition; prevention of dementia has not been demonstrated.",
+      "Evidence suggests usefulness for some mild-to-moderate depression settings, but product and comparator matter."
+    ],
+    "explanation": "Evidence for diabetes and milk supply is limited or mixed; food use is not proof of supplement efficacy.",
+    "source": "https://www.nccih.nih.gov/health/fenugreek"
+  },
+  {
+    "id": "clinical:sawpalmetto",
+    "plantId": "sawpalmetto",
+    "prompt": "Which evidence summary belongs to the Saw palmetto profile?",
+    "answer": "Large studies and reviews find little or no benefit for urinary symptoms from prostate enlargement.",
+    "options": [
+      "NCCIH finds no conclusive benefit for a health condition; prevention of dementia has not been demonstrated.",
+      "Evidence suggests usefulness for some mild-to-moderate depression settings, but product and comparator matter.",
+      "Large studies and reviews find little or no benefit for urinary symptoms from prostate enlargement.",
+      "Liver-disease trial results are conflicting or too limited for firm conclusions."
+    ],
+    "explanation": "Large studies and reviews find little or no benefit for urinary symptoms from prostate enlargement.",
+    "source": "https://www.nccih.nih.gov/health/saw-palmetto"
+  },
+  {
+    "id": "clinical:cranberry",
+    "plantId": "cranberry",
+    "prompt": "Which evidence summary belongs to the Cranberry profile?",
+    "answer": "Some evidence concerns prevention of recurrent UTIs in selected populations. It is not a treatment for an existing UTI.",
+    "options": [
+      "Evidence suggests usefulness for some mild-to-moderate depression settings, but product and comparator matter.",
+      "Some evidence concerns prevention of recurrent UTIs in selected populations. It is not a treatment for an existing UTI.",
+      "Liver-disease trial results are conflicting or too limited for firm conclusions.",
+      "NCCIH finds no conclusive benefit for a health condition; prevention of dementia has not been demonstrated."
+    ],
+    "explanation": "Some evidence concerns prevention of recurrent UTIs in selected populations. It is not a treatment for an existing UTI.",
+    "source": "https://www.nccih.nih.gov/health/cranberry"
+  },
+  {
+    "plantId": "stjohnswort",
+    "prompt": "A medication history includes St. John’s wort. What is the central pharmacy learning task?",
+    "options": [
+      "Assume all products are clinically interchangeable",
+      "Replace a prescribed medicine based on the plant name",
+      "Ignore supplements in the medication history",
+      "Review potentially serious medicine interactions"
+    ],
+    "answer": "Review potentially serious medicine interactions",
+    "explanation": "NCCIH documents dangerous interactions with numerous medicines. This is an interaction-recognition exercise, not a treatment recommendation.",
+    "source": "https://www.nccih.nih.gov/health/st-johns-wort",
+    "id": "clinical:case"
+  },
+  {
+    "id": "naturalproducts:blackseed",
+    "plantId": "blackseed",
+    "prompt": "Which educational focus is assigned to Black seed?",
+    "answer": "Thymoquinone, traditional uses",
+    "options": [
+      "Oleogum resins",
+      "Thymoquinone, traditional uses",
+      "Cardiovascular pharmacognosy",
+      "Resin acids, quality standardization"
+    ],
+    "explanation": "The selected learning focus is “Thymoquinone, traditional uses”. Marker matching is a curriculum exercise, not evidence of clinical benefit or an assay result.",
+    "source": "https://www.ncbi.nlm.nih.gov/books/NBK591552/pdf/Bookshelf_NBK591552.pdf"
+  },
+  {
+    "id": "naturalproducts:hawthorn",
+    "plantId": "hawthorn",
+    "prompt": "Which educational focus is assigned to Hawthorn?",
+    "answer": "Cardiovascular pharmacognosy",
+    "options": [
+      "Cardiovascular pharmacognosy",
+      "Thymoquinone, traditional uses",
+      "Resin acids, quality standardization",
+      "Oleogum resins"
+    ],
+    "explanation": "The selected learning focus is “Cardiovascular pharmacognosy”. Marker matching is a curriculum exercise, not evidence of clinical benefit or an assay result.",
+    "source": "https://www.nccih.nih.gov/health/hawthorn"
+  },
+  {
+    "id": "naturalproducts:boswellia",
+    "plantId": "boswellia",
+    "prompt": "Which educational focus is assigned to Boswellia?",
+    "answer": "Resin acids, quality standardization",
+    "options": [
+      "Cardiovascular pharmacognosy",
+      "Oleogum resins",
+      "Resin acids, quality standardization",
+      "Thymoquinone, traditional uses"
+    ],
+    "explanation": "The selected learning focus is “Resin acids, quality standardization”. Marker matching is a curriculum exercise, not evidence of clinical benefit or an assay result.",
+    "source": "https://www.nccih.nih.gov/health/boswellia"
+  },
+  {
+    "id": "naturalproducts:myrrh",
+    "plantId": "myrrh",
+    "prompt": "Which educational focus is assigned to Myrrh?",
+    "answer": "Oleogum resins",
+    "options": [
+      "Resin acids, quality standardization",
+      "Oleogum resins",
+      "Thymoquinone, traditional uses",
+      "Cardiovascular pharmacognosy"
+    ],
+    "explanation": "The selected learning focus is “Oleogum resins”. Marker matching is a curriculum exercise, not evidence of clinical benefit or an assay result.",
+    "source": "https://www.ema.europa.eu/en/medicines/herbal/myrrha"
+  },
+  {
+    "id": "naturalproducts:willow",
+    "plantId": "willow",
+    "prompt": "Which educational focus is assigned to Willow?",
+    "answer": "Salicylates, drug-discovery history",
+    "options": [
+      "Salicylates, drug-discovery history",
+      "Thymoquinone, traditional uses",
+      "Cardiovascular pharmacognosy",
+      "Resin acids, quality standardization"
+    ],
+    "explanation": "The selected learning focus is “Salicylates, drug-discovery history”. Marker matching is a curriculum exercise, not evidence of clinical benefit or an assay result.",
+    "source": "https://www.ema.europa.eu/en/medicines/herbal/salicis-cortex"
+  },
+  {
+    "id": "naturalproducts:foxglove",
+    "plantId": "foxglove",
+    "prompt": "Which educational focus is assigned to Foxglove?",
+    "answer": "Cardiac glycosides, severe toxicity",
+    "options": [
+      "Thymoquinone, traditional uses",
+      "Cardiovascular pharmacognosy",
+      "Resin acids, quality standardization",
+      "Cardiac glycosides, severe toxicity"
+    ],
+    "explanation": "The selected learning focus is “Cardiac glycosides, severe toxicity”. Marker matching is a curriculum exercise, not evidence of clinical benefit or an assay result.",
+    "source": "https://www.poison.org/articles/foxglove"
+  },
+  {
+    "id": "naturalproducts:opiumpoppy",
+    "plantId": "opiumpoppy",
+    "prompt": "Which educational focus is assigned to Opium poppy?",
+    "answer": "Opioid alkaloids, regulated medicines",
+    "options": [
+      "Resin acids, quality standardization",
+      "Opioid alkaloids, regulated medicines",
+      "Thymoquinone, traditional uses",
+      "Cardiovascular pharmacognosy"
+    ],
+    "explanation": "The selected learning focus is “Opioid alkaloids, regulated medicines”. Marker matching is a curriculum exercise, not evidence of clinical benefit or an assay result.",
+    "source": "https://www.dea.gov/factsheets/opium"
+  },
+  {
+    "id": "naturalproducts:cinchona",
+    "plantId": "cinchona",
+    "prompt": "Which educational focus is assigned to Cinchona?",
+    "answer": "Quinine, antimalarial history",
+    "options": [
+      "Quinine, antimalarial history",
+      "Thymoquinone, traditional uses",
+      "Cardiovascular pharmacognosy",
+      "Resin acids, quality standardization"
+    ],
+    "explanation": "The selected learning focus is “Quinine, antimalarial history”. Marker matching is a curriculum exercise, not evidence of clinical benefit or an assay result.",
+    "source": "https://medlineplus.gov/druginfo/meds/a682322.html"
+  },
+  {
+    "id": "naturalproducts:periwinkle",
+    "plantId": "periwinkle",
+    "prompt": "Which educational focus is assigned to Madagascar periwinkle?",
+    "answer": "Vinca alkaloids, oncology medicines",
+    "options": [
+      "Thymoquinone, traditional uses",
+      "Cardiovascular pharmacognosy",
+      "Resin acids, quality standardization",
+      "Vinca alkaloids, oncology medicines"
+    ],
+    "explanation": "The selected learning focus is “Vinca alkaloids, oncology medicines”. Marker matching is a curriculum exercise, not evidence of clinical benefit or an assay result.",
+    "source": "https://www.cancer.gov/publications/dictionaries/cancer-drug/def/vincristine-sulfate"
+  },
+  {
+    "id": "naturalproducts:yew",
+    "plantId": "yew",
+    "prompt": "Which educational focus is assigned to Pacific yew?",
+    "answer": "Paclitaxel, natural-product drug discovery",
+    "options": [
+      "Cardiovascular pharmacognosy",
+      "Resin acids, quality standardization",
+      "Paclitaxel, natural-product drug discovery",
+      "Thymoquinone, traditional uses"
+    ],
+    "explanation": "The selected learning focus is “Paclitaxel, natural-product drug discovery”. Marker matching is a curriculum exercise, not evidence of clinical benefit or an assay result.",
+    "source": "https://dctd.cancer.gov/programs/dtp/history"
+  },
+  {
+    "plantId": "yew",
+    "prompt": "What does the discovery of paclitaxel from Pacific yew establish about yew as a home remedy?",
+    "options": [
+      "The discovery does not establish safe use of the raw plant",
+      "Any garden extract has the same composition",
+      "A historical source proves every formulation works",
+      "The raw plant is equivalent to the regulated medicine"
+    ],
+    "answer": "The discovery does not establish safe use of the raw plant",
+    "explanation": "Drug-discovery history and the evidence for a standardized oncology medicine are distinct from use of plant material.",
+    "source": "https://dctd.cancer.gov/programs/dtp/history",
+    "id": "naturalproducts:case"
+  },
+  {
+    "id": "safety:sage",
+    "plantId": "sage",
+    "prompt": "Which safety statement belongs to Sage?",
+    "answer": "Common sage contains thujone; large amounts or prolonged use may be unsafe.",
+    "options": [
+      "Common sage contains thujone; large amounts or prolonged use may be unsafe.",
+      "Glycyrrhizin can cause serious cardiovascular adverse effects; medicine interactions are important.",
+      "Oral latex is not equivalent to topical gel. Do not infer that a whole leaf is safe to consume.",
+      "Raw seeds, bark, flowers and leaves are unsafe orally; standardized products are distinct."
+    ],
+    "explanation": "Common sage contains thujone; large amounts or prolonged use may be unsafe.",
+    "source": "https://www.nccih.nih.gov/health/sage"
+  },
+  {
+    "id": "safety:licorice",
+    "plantId": "licorice",
+    "prompt": "Which safety statement belongs to Licorice?",
+    "answer": "Glycyrrhizin can cause serious cardiovascular adverse effects; medicine interactions are important.",
+    "options": [
+      "Oral latex is not equivalent to topical gel. Do not infer that a whole leaf is safe to consume.",
+      "Raw seeds, bark, flowers and leaves are unsafe orally; standardized products are distinct.",
+      "Glycyrrhizin can cause serious cardiovascular adverse effects; medicine interactions are important.",
+      "Common sage contains thujone; large amounts or prolonged use may be unsafe."
+    ],
+    "explanation": "Glycyrrhizin can cause serious cardiovascular adverse effects; medicine interactions are important.",
+    "source": "https://www.nccih.nih.gov/health/licorice-root"
+  },
+  {
+    "id": "safety:aloe",
+    "plantId": "aloe",
+    "prompt": "Which safety statement belongs to Aloe vera?",
+    "answer": "Oral latex is not equivalent to topical gel. Do not infer that a whole leaf is safe to consume.",
+    "options": [
+      "Raw seeds, bark, flowers and leaves are unsafe orally; standardized products are distinct.",
+      "Oral latex is not equivalent to topical gel. Do not infer that a whole leaf is safe to consume.",
+      "Common sage contains thujone; large amounts or prolonged use may be unsafe.",
+      "Glycyrrhizin can cause serious cardiovascular adverse effects; medicine interactions are important."
+    ],
+    "explanation": "Oral latex is not equivalent to topical gel. Do not infer that a whole leaf is safe to consume.",
+    "source": "https://www.nccih.nih.gov/health/aloe-vera"
+  },
+  {
+    "id": "safety:horsechestnut",
+    "plantId": "horsechestnut",
+    "prompt": "Which safety statement belongs to Horse chestnut?",
+    "answer": "Raw seeds, bark, flowers and leaves are unsafe orally; standardized products are distinct.",
+    "options": [
+      "Common sage contains thujone; large amounts or prolonged use may be unsafe.",
+      "Glycyrrhizin can cause serious cardiovascular adverse effects; medicine interactions are important.",
+      "Oral latex is not equivalent to topical gel. Do not infer that a whole leaf is safe to consume.",
+      "Raw seeds, bark, flowers and leaves are unsafe orally; standardized products are distinct."
+    ],
+    "explanation": "Raw seeds, bark, flowers and leaves are unsafe orally; standardized products are distinct.",
+    "source": "https://www.nccih.nih.gov/health/horse-chestnut"
+  },
+  {
+    "id": "safety:neem",
+    "plantId": "neem",
+    "prompt": "Which safety statement belongs to Neem?",
+    "answer": "Neem seed oil has caused serious poisoning; plant parts and products cannot be treated as interchangeable.",
+    "options": [
+      "Common sage contains thujone; large amounts or prolonged use may be unsafe.",
+      "Glycyrrhizin can cause serious cardiovascular adverse effects; medicine interactions are important.",
+      "Oral latex is not equivalent to topical gel. Do not infer that a whole leaf is safe to consume.",
+      "Neem seed oil has caused serious poisoning; plant parts and products cannot be treated as interchangeable."
+    ],
+    "explanation": "Neem seed oil has caused serious poisoning; plant parts and products cannot be treated as interchangeable.",
+    "source": "https://www.ncbi.nlm.nih.gov/books/NBK548429/?report=printable"
+  },
+  {
+    "id": "safety:belladonna",
+    "plantId": "belladonna",
+    "prompt": "Which safety statement belongs to Deadly nightshade?",
+    "answer": "HIGHLY TOXIC. Poisonous berries and other parts must never be consumed or prepared.",
+    "options": [
+      "Glycyrrhizin can cause serious cardiovascular adverse effects; medicine interactions are important.",
+      "Oral latex is not equivalent to topical gel. Do not infer that a whole leaf is safe to consume.",
+      "HIGHLY TOXIC. Poisonous berries and other parts must never be consumed or prepared.",
+      "Common sage contains thujone; large amounts or prolonged use may be unsafe."
+    ],
+    "explanation": "HIGHLY TOXIC. Poisonous berries and other parts must never be consumed or prepared.",
+    "source": "https://www.poison.org/articles/plant"
+  },
+  {
+    "id": "safety:ephedra",
+    "plantId": "ephedra",
+    "prompt": "Which safety statement belongs to Ephedra?",
+    "answer": "Serious cardiovascular and neurological harms. US ephedrine-alkaloid dietary supplements are banned; this is not a global legal classification.",
+    "options": [
+      "Oral latex is not equivalent to topical gel. Do not infer that a whole leaf is safe to consume.",
+      "Serious cardiovascular and neurological harms. US ephedrine-alkaloid dietary supplements are banned; this is not a global legal classification.",
+      "Common sage contains thujone; large amounts or prolonged use may be unsafe.",
+      "Glycyrrhizin can cause serious cardiovascular adverse effects; medicine interactions are important."
+    ],
+    "explanation": "Serious cardiovascular and neurological harms. US ephedrine-alkaloid dietary supplements are banned; this is not a global legal classification.",
+    "source": "https://www.nccih.nih.gov/health/ephedra"
+  },
+  {
+    "id": "safety:castorbean",
+    "plantId": "castorbean",
+    "prompt": "Which safety statement belongs to Castor bean?",
+    "answer": "HIGHLY TOXIC SEEDS. Never consume, crush, prepare or use seeds as a remedy.",
+    "options": [
+      "HIGHLY TOXIC SEEDS. Never consume, crush, prepare or use seeds as a remedy.",
+      "Common sage contains thujone; large amounts or prolonged use may be unsafe.",
+      "Glycyrrhizin can cause serious cardiovascular adverse effects; medicine interactions are important.",
+      "Oral latex is not equivalent to topical gel. Do not infer that a whole leaf is safe to consume."
+    ],
+    "explanation": "HIGHLY TOXIC SEEDS. Never consume, crush, prepare or use seeds as a remedy.",
+    "source": "https://www.poison.org/articles/what-happens-if-i-eat-castor-beans-222"
+  },
+  {
+    "id": "safety:rauwolfia",
+    "plantId": "rauwolfia",
+    "prompt": "Which safety statement belongs to Rauwolfia?",
+    "answer": "Potent pharmacological and adverse effects. No raw-root remedy or dosing is taught.",
+    "options": [
+      "Common sage contains thujone; large amounts or prolonged use may be unsafe.",
+      "Glycyrrhizin can cause serious cardiovascular adverse effects; medicine interactions are important.",
+      "Oral latex is not equivalent to topical gel. Do not infer that a whole leaf is safe to consume.",
+      "Potent pharmacological and adverse effects. No raw-root remedy or dosing is taught."
+    ],
+    "explanation": "Potent pharmacological and adverse effects. No raw-root remedy or dosing is taught.",
+    "source": "https://www.ncbi.nlm.nih.gov/books/NBK590869/"
+  },
+  {
+    "id": "safety:autumncrocus",
+    "plantId": "autumncrocus",
+    "prompt": "Which safety statement belongs to Autumn crocus?",
+    "answer": "HIGHLY TOXIC. Recognition and medicine-safety education only; never consume or prepare the plant.",
+    "options": [
+      "Glycyrrhizin can cause serious cardiovascular adverse effects; medicine interactions are important.",
+      "Oral latex is not equivalent to topical gel. Do not infer that a whole leaf is safe to consume.",
+      "HIGHLY TOXIC. Recognition and medicine-safety education only; never consume or prepare the plant.",
+      "Common sage contains thujone; large amounts or prolonged use may be unsafe."
+    ],
+    "explanation": "HIGHLY TOXIC. Recognition and medicine-safety education only; never consume or prepare the plant.",
+    "source": "https://www.poison.org/articles/plant"
+  },
+  {
+    "plantId": "castorbean",
+    "prompt": "Which material distinction is essential in the castor-bean record?",
+    "options": [
+      "Poisonous seeds and pharmaceutical castor oil are interchangeable",
+      "A processed product and the toxic raw seed are different materials",
+      "Food-like appearance proves safety",
+      "A traditional claim removes the need to assess toxicity"
+    ],
+    "answer": "A processed product and the toxic raw seed are different materials",
+    "explanation": "Poison Control identifies ricin in castor beans and distinguishes it from castor oil. No seed processing or use is taught.",
+    "source": "https://www.poison.org/articles/what-happens-if-i-eat-castor-beans-222",
+    "id": "safety:case"
+  }
+]

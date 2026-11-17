@@ -1,3 +1,17 @@
+# Atlas 5.3 — Tier 3 update
+
+Added the exact supplied priorities 101–150 and Modules 11–15. Totals: 150 introductory plant profiles, fifteen modules and 165 module questions. Five research missions add fifteen separate saved decisions. Missions use clearly labeled fictional analytical data and exposure cases. All Module 14 entries are recognition-only. Eight cultivation beds, original 100 records/questions and saved progress remain intact.
+
+These additions do not complete the premium 3D simulation or 150 specialist-reviewed monographs. Symbolic study motifs are not diagnostic art. Source scope, provisional metadata and outstanding review gaps are explicit. See TIER-3.md, TIER-3-SOURCES.md and VERIFICATION-5.3.md for the current release. Earlier checklists follow as historical context.
+
+# Atlas 5.2 update — Essential 100
+
+Added priorities 51–100 in the supplied five modules. Total: 100 introductory plant profiles, ten modules and 110 saved practice questions/cases. Essential 50 records and question content are unchanged. Collection filtering, notes, literature connections, recognition records and JSON backups support the expansion. Module 10 is explicitly recognition-only, independent of hazard category.
+
+The original eight cultivation beds remain the simulated garden. No additional species-specific cultivation or diagnostic art is claimed. The seven profile sections are introductory; provisional botanical/chemical labels, microscopy, quality specifications, detailed mechanisms and several plant-specific source appraisals remain unfinished. See CURRICULUM-100.md and VERIFICATION-5.2.md for current scope and checks.
+
+Earlier implementation checklist and limitations follow as historical context.
+
 # Implementation checklist and production gaps
 
 This release is a local-first vertical slice. “Implemented” below describes code and behavior present in this edition; the final verification record is in `VERIFICATION.md`. It is not a claim that the complete master brief is satisfied.
@@ -17,7 +31,9 @@ This release is a local-first vertical slice. “Implemented” below describes 
 - [x] Procedural avatar/cat appearance controls and subtle idle motion.
 - [x] Original library/garden geometry, wood grain, shelving, seating, fireplace, raised beds, greenhouse, pavilion and fountain.
 - [x] Bed preparation, sowing, watering, visible six-stage growth, drought/health and virtual specimen collection.
-- [x] Source-linked field book for eight species, user botanical notes and explicit toxicity flags.
+- [x] Expanded field book for 50 priority plants with seven scoped study sections, notes, references and explicit toxicity/controlled-context labels.
+- [x] Five ten-plant modules, 55 practice questions/cases, saved progress and virtual recognition records.
+- [x] Backward-compatible learning state and a pre-upgrade metadata snapshot; the original eight cultivation beds are preserved.
 - [x] Persistent herbarium sheets with editable observations.
 - [x] Botanical-to-library relationships and resource backlinks.
 - [x] Local PDF/image/text/Markdown import; unsupported-format handling.
@@ -40,7 +56,7 @@ This release is a local-first vertical slice. “Implemented” below describes 
 - [ ] Continuous background/offline plant growth. Growth advances only with the explicit next-day action.
 - [ ] Species-specific six-stage morphology validated by a botanist; the existing plant forms are illustrative motifs.
 - [ ] A complete taxonomically reviewed encyclopedia with geographic distribution, validated microscopy, clinical bibliography, full safety/interactions and analytical specifications.
-- [ ] Educational modules for all requested chemical classes, biosynthesis, spectroscopy, verified 2D/3D molecular structures and validated simulated analytical workflows. Present lab contains only an explicitly synthetic two-peak trace and a verified menthol source link.
+- [ ] Comprehensive specialist-reviewed instruction across all chemical classes, biosynthesis, spectroscopy, verified 2D/3D structures and validated analytical workflows. The new 55-question curriculum covers selected study mappings, scoped evidence and safety cases; detailed mechanisms and microscopy remain incomplete. The lab retains its synthetic trace and menthol source link.
 - [ ] EPUB reader, OCR, selectable PDF text layer, passage-linked highlights, split view and passage-selection keyboard commands. Arrow-page and +/− zoom shortcuts are implemented.
 - [ ] Custom metadata schemas, smart saved filters, custom collections/shelves UI, recent-resource tracking and complete reading-list workflows. This edition includes searchable collections, editable collection labels/tags, favorites and progress.
 - [ ] Universal relationship graph across all entity types. Current explicit links connect plant records and resources; flashcards refer to books and specimens to species.

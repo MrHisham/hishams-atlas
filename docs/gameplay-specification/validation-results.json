@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-02",
+  "status": "PASS",
+  "checks": 21,
+  "passed": [
+    "authoring bundle structural schema",
+    "example graph structural schema",
+    "quest references, DAG, competencies and rubric variants",
+    "exact three departments and fifteen ordered quests",
+    "twelve review candidates, zero falsely approved profiles",
+    "example graph source and plant links resolve",
+    "learner payload excludes grading and transfer keys",
+    "instructor keys match quest IDs and rubric dimensions",
+    "foreign-material percentage and unseen reversal",
+    "TLC Rf arithmetic",
+    "largest chromatogram discrepancy and percentage",
+    "transfer peak changes to X rather than memorized C",
+    "model EC50 ratio and half-maximum",
+    "trial risk difference and approximate uncertainty",
+    "standard threshold accepts eight but rejects seven",
+    "safety-critical miss blocks maximum score",
+    "capstone zero dimension blocks numeric ten",
+    "assisted pass cannot establish independent mastery",
+    "rejects a cyclic/future prerequisite",
+    "rejects fabricated approval with absent reviewer/dates",
+    "rejects unknown entity fields"
+  ],
+  "limitations": [
+    "Dependency-free checker covers the schema keywords used in this package, not full JSON Schema standards conformance.",
+    "No authentic plant/microscopy dataset or independent scientific review is claimed.",
+    "No game implementation, learner testing, instructor sign-off or learning-effect validation performed."
+  ]
+}

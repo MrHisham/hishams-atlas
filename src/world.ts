@@ -3,7 +3,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import type { State, World, Book } from './model';
 import { plantById, plants } from './botany';
 export type Interaction = {
-    kind: 'door' | 'book' | 'bed' | 'lab' | 'greenhouse' | 'companion' | 'portal' | 'station';
+    kind: 'door' | 'book' | 'bed' | 'lab' | 'greenhouse' | 'companion';
     id: string;
     label: string;
 };
@@ -43,10 +43,6 @@ export class AtlasWorld {
     door?: T.Group;
     doorOpening = 0;
     nightLight?: T.DirectionalLight;
-    ambientLight?: T.HemisphereLight;
-    roomLamps: T.PointLight[] = [];
-    lastDaylightUpdate = -1;
-    lastWorld = '';
     resizeObserver: ResizeObserver;
     dirty = true;
     dragging = false;
@@ -54,8 +50,6 @@ export class AtlasWorld {
     yaw = 0;
     pitch = -.06;
     transition = 0;
-    movementVelocity = new T.Vector2();
-    focusCooldown = 0;
     targetPos = new T.Vector3();
     targetLook = new T.Vector3();
     constructor(public host: HTMLElement, s: State, onAction: (i: Interaction) => void, onHover: (i: Interaction | null) => void) { this.state = s; this.onAction = onAction; this.onHover = onHover; this.renderer = new T.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' }); this.renderer.setClearColor('#263a31'); this.renderer.shadowMap.enabled = true; this.renderer.shadowMap.type = T.PCFSoftShadowMap; this.renderer.toneMapping = T.ACESFilmicToneMapping; this.renderer.toneMappingExposure = 1.12; host.appendChild(this.renderer.domElement); this.controls = new OrbitControls(this.camera, this.renderer.domElement); this.controls.enabled = false; this.controls.enableDamping = true; this.controls.addEventListener('change', () => { this.dirty = true; }); this.controls.minDistance = 1.4; this.controls.maxDistance = 12; this.controls.maxPolarAngle = Math.PI * .49; this.scene.add(this.root); this.resizeObserver = new ResizeObserver(() => this.resize()); this.resizeObserver.observe(host); this.resize(); window.addEventListener('keydown', this.keydown); window.addEventListener('keyup', this.keyup); window.addEventListener('blur', this.blur); this.renderer.domElement.addEventListener('pointerdown', this.pointerdown); window.addEventListener('pointerup', this.pointerup); this.renderer.domElement.addEventListener('pointermove', this.pointermove); this.renderer.domElement.addEventListener('webglcontextlost', this.contextlost); this.build('library'); this.frame = requestAnimationFrame(this.tick); }
@@ -63,13 +57,11 @@ export class AtlasWorld {
     resize() { this.dirty = true; const { width, height } = this.host.getBoundingClientRect(); this.renderer.setSize(width, height); this.camera.aspect = width / height; this.camera.updateProjectionMatrix(); }
     keydown = (e: KeyboardEvent) => { if (!this.interactive || /INPUT|TEXTAREA|SELECT/.test((e.target as HTMLElement)?.tagName))
         return; if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(e.key))
-        e.preventDefault(); this.keys.add(e.key.toLowerCase()); if (e.key.toLowerCase() === 'e' && !e.repeat) {
-        const target = this.pickCenter() || this.hover;
-        if (target) this.act(target);
-    } if (e.key.toLowerCase() === 'r')
+        e.preventDefault(); this.keys.add(e.key.toLowerCase()); if (e.key.toLowerCase() === 'e' && !e.repeat && this.hover)
+        this.act(this.hover); if (e.key.toLowerCase() === 'r')
         this.resetCamera(); };
     keyup = (e: KeyboardEvent) => this.keys.delete(e.key.toLowerCase());
-    blur = () => { this.keys.clear(); this.dragging = false; this.movementVelocity.set(0, 0); };
+    blur = () => { this.keys.clear(); this.dragging = false; };
     pointerdown = (e: PointerEvent) => { this.dragging = true; this.down = { x: e.clientX, y: e.clientY }; };
     pointerup = (e: PointerEvent) => { if (this.dragging && this.interactive && Math.hypot(e.clientX - this.down.x, e.clientY - this.down.y) < 5) {
         const hit = this.pick(e.clientX, e.clientY);
@@ -85,16 +77,6 @@ export class AtlasWorld {
         this.hover = hit;
         this.onHover(hit);
     } this.renderer.domElement.style.cursor = hit ? 'pointer' : this.dragging ? 'grabbing' : 'grab'; };
-    pickCenter() {
-        if (this.world === 'study') return null;
-        const rect = this.renderer.domElement.getBoundingClientRect();
-        const candidate = this.pick(rect.left + rect.width / 2, rect.top + rect.height / 2);
-        if (!candidate) return null;
-        const ray = new T.Raycaster();
-        ray.setFromCamera(new T.Vector2(0, 0), this.camera);
-        const hit = ray.intersectObjects(this.clickables, true).find(h => h.distance < 3.8);
-        return hit ? candidate : null;
-    }
     pick(x: number, y: number) { if (this.world !== 'study') {
         this.camera.rotation.order = 'YXZ';
         this.camera.rotation.set(this.pitch, this.yaw, 0);
@@ -130,102 +112,13 @@ export class AtlasWorld {
             lines[l] += word + ' ';
     } lines.slice(0, 3).forEach((l, i) => a.fillText(l, 384, 96 + (i - (Math.min(lines.length, 3) - 1) / 2) * 41)); const texture = new T.CanvasTexture(c); texture.colorSpace = T.SRGBColorSpace; this.textures.push(texture); const m = new T.MeshBasicMaterial({ map: texture }); this.materials.push(m); return this.mesh(this.geo(new T.PlaneGeometry(w, h)), m, x, y, z, parent); }
     bind(o: T.Object3D, i: Interaction) { o.userData.interaction = i; this.clickables.push(o); }
-    clear() { this.root.clear(); this.geometries.forEach(g => g.dispose()); this.materials.forEach(m => m.dispose()); this.textures.forEach(t => t.dispose()); this.geometries = []; this.materials = []; this.textures = []; this.clickables = []; this.colliders = []; this.wind = []; this.beds.clear(); this.avatar = undefined; this.cat = undefined; this.door = undefined; this.roomLamps = []; this.ambientLight = undefined; this.renderer.renderLists.dispose(); this.hover = null; this.onHover(null); }
-    build(world: World) { this.dirty = true; if (this.lastWorld && this.lastWorld !== world && !this.state.settings.reducedMotion) { this.renderer.domElement.classList.remove('atlas-room-arrival'); void this.renderer.domElement.offsetWidth; this.renderer.domElement.classList.add('atlas-room-arrival'); } this.lastWorld = world; this.clear(); this.world = world; this.doorOpening = 0; this.scene.background = new T.Color(world === 'garden' ? '#afc6bb' : '#272d24'); this.scene.fog = new T.Fog(world === 'garden' ? '#afc6bb' : '#383d30', world === 'garden' ? 22 : 25, world === 'garden' ? 65 : 55); const hemi = new T.HemisphereLight('#e5ede4', '#654d33', world === 'garden' ? 2 : 1.35); this.root.add(hemi); this.ambientLight = hemi; const sun = new T.DirectionalLight('#ffdfab', this.state.settings.night ? .45 : 3.5); sun.position.set(-7, 12, 6); sun.castShadow = true; sun.shadow.mapSize.set(1024, 1024); sun.shadow.camera.left = -17; sun.shadow.camera.right = 17; sun.shadow.camera.top = 17; sun.shadow.camera.bottom = -17; sun.shadow.normalBias = .035; this.root.add(sun); this.nightLight = sun; if (world === 'garden')
+    clear() { this.root.clear(); this.geometries.forEach(g => g.dispose()); this.materials.forEach(m => m.dispose()); this.textures.forEach(t => t.dispose()); this.geometries = []; this.materials = []; this.textures = []; this.clickables = []; this.colliders = []; this.wind = []; this.beds.clear(); this.avatar = undefined; this.cat = undefined; this.door = undefined; this.renderer.renderLists.dispose(); this.hover = null; this.onHover(null); }
+    build(world: World) { this.dirty = true; this.clear(); this.world = world; this.doorOpening = 0; this.scene.background = new T.Color(world === 'garden' ? '#afc6bb' : '#272d24'); this.scene.fog = new T.Fog(world === 'garden' ? '#afc6bb' : '#383d30', world === 'garden' ? 22 : 25, world === 'garden' ? 65 : 55); const hemi = new T.HemisphereLight('#e5ede4', '#654d33', world === 'garden' ? 2 : 1.35); this.root.add(hemi); const sun = new T.DirectionalLight('#ffdfab', this.state.settings.night ? .45 : 3.5); sun.position.set(-7, 12, 6); sun.castShadow = true; sun.shadow.mapSize.set(1024, 1024); sun.shadow.camera.left = -17; sun.shadow.camera.right = 17; sun.shadow.camera.top = 17; sun.shadow.camera.bottom = -17; sun.shadow.normalBias = .035; this.root.add(sun); this.nightLight = sun; if (world === 'garden')
         this.buildGarden();
-    else if (world === 'quarters' || world === 'clinical')
-        this.buildAcademyRoom(world);
-    else {
-        this.buildLibrary(world === 'study');
-        if (world === 'library') this.buildAcademyPortals();
-    } this.applySettings(); this.resetCamera(); }
-    buildAcademyPortals() {
-        const brass = this.mat('#b9995c', .35, .55), oak = this.mat('#342a23');
-        for (const [x, target, name] of [[-5.7, 'quarters', 'PERSONAL QUARTERS'], [5.7, 'clinical', 'CLINICAL HALL']] as const) {
-            const frame = this.box(1.55, 2.8, .18, x, 1.4, 6.45, oak);
-            this.box(1.28, 2.48, .1, x, 1.28, 6.35, brass);
-            const plate = this.label(name, 1.55, .45, x, 3.14, 6.2);
-            this.bind(frame, {kind:'portal', id:target, label:`Enter ${name.toLowerCase()}`});
-            this.bind(plate, {kind:'portal', id:target, label:`Enter ${name.toLowerCase()}`});
-        }
-    }
-    buildAcademyRoom(room: 'quarters' | 'clinical') {
-        const privateRoom = room === 'quarters';
-        const wood = this.mat('#5a3a29'), stone = this.mat('#3b413d'), brass = this.mat('#b99b68', .35, .45), fabric = this.mat('#72806c'), parchment = this.mat('#dfcda4'), glass = this.mat('#7c9e94', .15, .35);
-        this.box(16, .25, 13, 0, -.15, 0, wood);
-        // Inlaid floorboards, ceiling beams and warm sconces make the rooms feel inhabited.
-        const floorTrim = this.mat('#735039'), paleStone = this.mat('#a19579');
-        for (let x = -7.4; x <= 7.4; x += .8) this.box(.035, .012, 12.6, x, -.012, 0, floorTrim);
-        for (const z of [-5.2, -2.6, 0, 2.6, 5.2]) this.box(15.7, .25, .3, 0, 5.84, z, wood);
-        for (const x of [-7.5, 7.5]) for (const z of [-4.8, 0, 4.8]) {
-            this.box(.26, 2.5, .26, x, 3.75, z, paleStone);
-            const lamp = new T.PointLight('#ffc783', 9, 5, 2);
-            lamp.position.set(x > 0 ? x - .35 : x + .35, 3.3, z); this.root.add(lamp); this.roomLamps.push(lamp);
-            this.sphere(.14, x > 0 ? x - .35 : x + .35, 3.3, z, brass);
-        }
-        // The far wall has framed, illuminated glazing instead of an unbroken slab.
-        for (const x of [-5.5, 5.5]) {
-            this.box(1.6, 2.6, .07, x, 3.6, -6.12, brass);
-            this.box(1.35, 2.36, .075, x, 3.6, -6.06, glass);
-            this.box(.09, 2.36, .09, x, 3.6, -5.99, wood);
-            this.box(1.35, .08, .09, x, 3.6, -5.99, wood);
-        }
-        this.box(16, 6, .3, 0, 3, -6.4, stone);
-        this.box(.3, 6, 13, -8, 3, 0, stone);
-        this.box(.3, 6, 13, 8, 3, 0, stone);
-        this.box(16, .25, 13, 0, 6.1, 0, wood);
-        for (const x of [-6,-3,0,3,6]) { this.box(.13, 6, .16, x, 3, -6.22, wood); }
-        for (const x of [-4,0,4]) { const light=new T.PointLight('#ffd7a0', 25, 8); light.position.set(x,4,-2); this.root.add(light); this.roomLamps.push(light); this.sphere(.12,x,4,-2,brass); }
-        this.label(privateRoom ? 'HISHAM’S QUARTERS' : 'THE CLINICAL HALL', 4.8, .8, 0, 4.8, -6.17);
-        const exit = this.box(1.9, 3, .25, 0, 1.5, 6.35, wood);
-        this.bind(exit, {kind:'portal',id:'library',label:'Return to the library'});
-        this.label('LIBRARY', 1.7, .45, 0, 3.15, 6.17);
-        if (privateRoom) {
-            this.colliders.push({x:-4.8,z:-2.5,w:3.3,d:4.3},{x:3,z:-3.5,w:3.6,d:1.8},{x:-6.5,z:-4.5,w:2.7,d:1});
-            this.box(3.1,.5,4.1,-4.8,.65,-2.5,wood);
-            this.box(2.8,.35,3.65,-4.8,1,-2.5,fabric);
-            this.box(2.65,.2,.8,-4.8,1.28,-4,parchment);
-            const desk=this.box(3.4,.25,1.5,3,1.6,-3.5,wood);
-            for (const x of [1.6,4.4]) this.box(.18,1.4,.18,x,.8,-3.5,brass);
-            this.bind(desk,{kind:'station',id:'quarters',label:'Open daily routines and reflections'});
-            this.label('DAILY PLANNER',2.3,.43,3,2.12,-3.55);
-            this.box(2.5,2.7,.6,-6.5,1.5,-4.5,wood);
-            for(let i=0;i<4;i++) this.box(2.3,.13,.57,-6.5,.6+i*.58,-4.5,brass);
-        } else {
-            for(const x of [-4.8,0,4.8]) {
-                this.colliders.push({x,z:-2.2,w:3.35,d:1.8});
-                const table=this.box(3.2,.22,1.6,x,1.5,-2.2,wood);
-                for(const dx of [-1.3,1.3]) this.box(.13,1.4,.13,x+dx,.78,-2.2,brass);
-                this.box(1.6,.14,.9,x,1.69,-2.2,parchment);
-                this.cylinder(.18,.65,x+.9,2,-2.1,glass);
-                this.bind(table,{kind:'station',id:'clinical',label:'Begin a clinical pharmacy case'});
-            }
-            this.label('CASE DISCUSSION • EVIDENCE • SAFETY',5,.6,0,3.65,-6.13);
-            this.box(8,2.2,.15,0,2.45,-6.15,this.mat('#243e37'));
-        }
-        // A fellow academy scholar provides a quiet sense of life without blocking paths.
-        this.buildAvatar(privateRoom ? -1.7 : 6.35, 0, privateRoom ? -3.4 : -3.8);
-    }
-    updateDaylight(force = false) {
-        const time = new Date();
-        const minute = time.getHours() * 60 + time.getMinutes();
-        if (!force && minute === this.lastDaylightUpdate) return;
-        this.lastDaylightUpdate = minute;
-        // Civil-time-inspired ambient curve; manual Evening lighting overrides it.
-        const hour = minute / 60;
-        const daylight = Math.max(0, Math.min(1, (hour - 5.5) / 2.5, (20 - hour) / 2.5));
-        const brightness = this.state.settings.night ? 0.08 : daylight;
-        if (this.nightLight) this.nightLight.intensity = .35 + brightness * 3.15;
-        if (this.ambientLight) this.ambientLight.intensity = .8 + brightness * (this.world === 'garden' ? 1.2 : .55);
-        this.roomLamps.forEach(lamp => { lamp.intensity = (this.world === 'quarters' || this.world === 'clinical' ? 8 : 5) + (1-brightness)*6; });
-        const sky = new T.Color(this.world === 'garden' ? '#101d2b' : '#161e28');
-        sky.lerp(new T.Color(this.world === 'garden' ? '#afc6bb' : '#272d24'), brightness);
-        this.scene.background = sky;
-        if (this.scene.fog instanceof T.Fog) this.scene.fog.color.copy(sky);
-        this.renderer.toneMappingExposure = .78 + brightness * .34;
-        this.dirty = true;
-    }
-    applySettings() { const p = this.state.settings; this.renderer.setPixelRatio(Math.min(devicePixelRatio, p.quality === 'Low' ? 1 : p.quality === 'Medium' ? 1.25 : p.quality === 'Ultra' ? 2 : 1.5)); this.renderer.shadowMap.enabled = p.quality !== 'Low'; this.updateDaylight(true); if (this.avatar) {
+    else
+        this.buildLibrary(world === 'study'); this.applySettings(); this.resetCamera(); }
+    applySettings() { const p = this.state.settings; this.renderer.setPixelRatio(Math.min(devicePixelRatio, p.quality === 'Low' ? 1 : p.quality === 'Medium' ? 1.25 : p.quality === 'Ultra' ? 2 : 1.5)); this.renderer.shadowMap.enabled = p.quality !== 'Low'; if (this.nightLight)
+        this.nightLight.intensity = p.night ? .45 : 3.5; this.renderer.toneMappingExposure = p.night ? .85 : 1.12; if (this.avatar) {
         this.avatar.traverse(o => { if (o.userData.part === 'outfit')
             ((o as T.Mesh).material as T.MeshStandardMaterial).color.set(p.outfit); if (o.userData.part === 'hair')
             ((o as T.Mesh).material as T.MeshStandardMaterial).color.set(p.hair); if (o.userData.part === 'skin')
@@ -420,7 +313,7 @@ export class AtlasWorld {
                 this.box(.13, .5, 2.85, dx, .25, 0, wood, g);
             for (const dz of [-1.35, 1.35])
                 this.box(4, .5, .13, 0, .25, dz, wood, g);
-            this.label(plants[i].common.toUpperCase(), 1.7, .32, 0, .65, 1.44, g);
+            this.label(plantById(this.state.beds[i].species).common.toUpperCase(), 1.7, .32, 0, .65, 1.44, g);
             this.bind(g, { kind: 'bed', id: `bed-${i}`, label: `${plants[i].common} · select bed` });
             const planting = new T.Group();
             g.add(planting);
@@ -555,7 +448,7 @@ export class AtlasWorld {
         }
         g.userData.stage = b.stage;
     } }
-    resetCamera() { this.dirty = true; this.movementVelocity.set(0,0); this.yaw = 0; this.pitch = -.06; if (this.world === 'garden') {
+    resetCamera() { this.dirty = true; this.yaw = 0; this.pitch = -.06; if (this.world === 'garden') {
         this.camera.position.set(0, 2.1, 9);
         this.yaw = 0;
         this.pitch = -.12;
@@ -564,10 +457,8 @@ export class AtlasWorld {
         this.studyCamera(true);
         return;
     }
-    else if (this.world === 'quarters' || this.world === 'clinical')
-        this.camera.position.set(.2, 2.15, 3.9);
     else
-        this.camera.position.set(.2, 2.15, 5.1); this.controls.enabled = false; this.transition = 0; }
+        this.camera.position.set(.2, 2.15, 6.5); this.controls.enabled = false; this.transition = 0; }
     studyCamera(immediate = false) { const views: Record<string, [
         number[],
         number[]
@@ -579,29 +470,11 @@ export class AtlasWorld {
     }
     else
         this.transition = 1; }
-    move(forward: number, side: number, dt: number) {
-        if (this.world === 'study') return;
-        // Frame-rate-independent acceleration/deceleration avoids abrupt keyboard starts.
-        const magnitude = Math.hypot(forward, side) || 1;
-        const maxSpeed = this.keys.has('shift') ? 4.5 : 2.6;
-        const desiredX = side / magnitude * maxSpeed;
-        const desiredY = forward / magnitude * maxSpeed;
-        const blend = 1 - Math.exp(-11 * dt);
-        this.movementVelocity.x += (desiredX - this.movementVelocity.x) * blend;
-        this.movementVelocity.y += (desiredY - this.movementVelocity.y) * blend;
-        if (this.movementVelocity.lengthSq() < .0002) return;
-        this.dirty = true;
-        const dx = (-Math.sin(this.yaw) * this.movementVelocity.y + Math.cos(this.yaw) * this.movementVelocity.x) * dt;
-        const dz = (-Math.cos(this.yaw) * this.movementVelocity.y - Math.sin(this.yaw) * this.movementVelocity.x) * dt;
-        const p = this.camera.position;
-        const room = this.world === 'quarters' || this.world === 'clinical';
-        const valid = (x: number, z: number) => Math.abs(x) < (this.world === 'garden' ? 17 : room ? 7.55 : 7.4)
-            && z > (this.world === 'garden' ? -22 : -6.05)
-            && z < (this.world === 'garden' ? 10 : room ? 6.05 : 7)
-            && !this.colliders.some(c => Math.abs(x - c.x) < c.w / 2 + .32 && Math.abs(z - c.z) < c.d / 2 + .32);
-        if (valid(p.x + dx, p.z)) p.x += dx; else this.movementVelocity.x *= .6;
-        if (valid(p.x, p.z + dz)) p.z += dz; else this.movementVelocity.y *= .6;
-    }
+    move(forward: number, side: number, dt: number) { if (forward || side)
+        this.dirty = true; if (this.world === 'study')
+        return; const speed = (this.keys.has('shift') ? 5 : 2.7) * dt; const dx = (-Math.sin(this.yaw) * forward + Math.cos(this.yaw) * side) * speed, dz = (-Math.cos(this.yaw) * forward - Math.sin(this.yaw) * side) * speed; const p = this.camera.position; const valid = (x: number, z: number) => Math.abs(x) < (this.world === 'garden' ? 17 : 8.4) && z > (this.world === 'garden' ? -22 : -6.1) && z < (this.world === 'garden' ? 10 : 7) && !this.colliders.some(c => Math.abs(x - c.x) < c.w / 2 + .3 && Math.abs(z - c.z) < c.d / 2 + .3); if (valid(p.x + dx, p.z))
+        p.x += dx; if (valid(p.x, p.z + dz))
+        p.z += dz; }
     teleport(where: string) { this.dirty = true; if (this.world === 'garden') {
         const poses: Record<string, number[]> = { entrance: [0, 2.1, 9], beds: [0, 2.1, 5], greenhouse: [-9, 2.1, -10], lab: [9, 2.1, -10] };
         this.camera.position.fromArray(poses[where] || poses.entrance);
@@ -617,19 +490,10 @@ export class AtlasWorld {
         return; if (now - this.lastRender < (this.interactive ? 33 : 250)) {
         this.frame = requestAnimationFrame(this.tick);
         return;
-    } this.lastRender = now; const dt = Math.min(.05, (now - (this.last || now)) / 1000); this.last = now; this.time += dt; this.updateDaylight(); if (this.interactive) {
+    } this.lastRender = now; const dt = Math.min(.05, (now - (this.last || now)) / 1000); this.last = now; this.time += dt; if (this.interactive) {
         const forward = Number(this.keys.has('w') || this.keys.has('arrowup')) - Number(this.keys.has('s') || this.keys.has('arrowdown'));
         const side = Number(this.keys.has('d') || this.keys.has('arrowright')) - Number(this.keys.has('a') || this.keys.has('arrowleft'));
         this.move(forward, side, dt);
-        this.focusCooldown -= dt;
-        if (this.focusCooldown <= 0 && !this.dragging) {
-            this.focusCooldown = .15;
-            const target = this.pickCenter();
-            if (target?.id !== this.hover?.id || target?.kind !== this.hover?.kind) {
-                this.hover = target;
-                this.onHover(target);
-            }
-        }
     } if (this.world !== 'study') {
         this.camera.rotation.order = 'YXZ';
         this.camera.rotation.set(this.pitch, this.yaw, 0);

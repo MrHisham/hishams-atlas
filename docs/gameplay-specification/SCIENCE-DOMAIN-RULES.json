@@ -1,0 +1,230 @@
+{
+  "version": "0.1.0",
+  "date": "2026-11-02",
+  "format": "scientific graph contract; structural JSON Schema plus domain rules",
+  "entity_required": {
+    "Plant": [
+      "id",
+      "version",
+      "taxonAuthority",
+      "taxonId",
+      "acceptedName",
+      "synonyms",
+      "family",
+      "claimIds"
+    ],
+    "Specimen": [
+      "id",
+      "version",
+      "accession",
+      "declaredPlantId",
+      "verifiedPlantId",
+      "part",
+      "origin",
+      "custodyEvents",
+      "authenticationStatus",
+      "assetIds",
+      "claimIds"
+    ],
+    "PlantMaterial": [
+      "id",
+      "version",
+      "plantId",
+      "part",
+      "lot",
+      "processingDescription",
+      "claimIds"
+    ],
+    "Preparation": [
+      "id",
+      "version",
+      "materialId",
+      "type",
+      "specificationVersion",
+      "compositionScope",
+      "routeScope",
+      "claimIds"
+    ],
+    "Constituent": [
+      "id",
+      "version",
+      "moleculeAuthority",
+      "moleculeId",
+      "chemicalClass",
+      "structureAssetId",
+      "claimIds"
+    ],
+    "Target": [
+      "id",
+      "version",
+      "authority",
+      "authorityId",
+      "name",
+      "claimIds"
+    ],
+    "Bioactivity": [
+      "id",
+      "version",
+      "targetId",
+      "interventionId",
+      "assayType",
+      "conditions",
+      "endpoint",
+      "estimate",
+      "uncertainty",
+      "claimIds"
+    ],
+    "SafetyRecord": [
+      "id",
+      "version",
+      "hazard",
+      "exposureScope",
+      "preparationIds",
+      "evidenceType",
+      "jurisdiction",
+      "claimIds"
+    ],
+    "ClinicalEvidence": [
+      "id",
+      "version",
+      "sourceId",
+      "design",
+      "population",
+      "preparationId",
+      "comparator",
+      "outcome",
+      "timepoint",
+      "estimate",
+      "uncertainty",
+      "limitations",
+      "claimIds"
+    ],
+    "AnalyticalDataset": [
+      "id",
+      "version",
+      "originClass",
+      "methodId",
+      "methodVersion",
+      "referenceIds",
+      "sampleIds",
+      "controlIds",
+      "units",
+      "normalizationBasis",
+      "acceptanceRuleOrigin",
+      "contentHash",
+      "review"
+    ],
+    "Claim": [
+      "id",
+      "version",
+      "statement",
+      "scope",
+      "sourceIds",
+      "publicationLocators",
+      "evidenceType",
+      "verificationStatus",
+      "review"
+    ],
+    "Source": [
+      "id",
+      "version",
+      "organizationOrAuthors",
+      "title",
+      "publicationDate",
+      "urlOrIdentifier",
+      "accessedDate",
+      "scope"
+    ],
+    "Asset": [
+      "id",
+      "version",
+      "sourceId",
+      "license",
+      "permissionRecord",
+      "scaleOrNotApplicable",
+      "diagnosticScope",
+      "contentHash",
+      "review"
+    ],
+    "LearningObjective": [
+      "id",
+      "version",
+      "competency",
+      "observablePerformance",
+      "prerequisites",
+      "rubricId",
+      "transferRequirements"
+    ],
+    "Quest": [
+      "id",
+      "version",
+      "scenario",
+      "engine",
+      "objectiveIds",
+      "datasetIds",
+      "allowedActions",
+      "rubricId",
+      "prerequisites"
+    ],
+    "Attempt": [
+      "id",
+      "learnerPseudonym",
+      "questId",
+      "questVersion",
+      "datasetVersions",
+      "rubricVersion",
+      "assistance",
+      "firstResponse",
+      "reportId",
+      "scores",
+      "criticalFlags",
+      "timestamp"
+    ],
+    "Report": [
+      "id",
+      "version",
+      "attemptId",
+      "evidenceIds",
+      "calculations",
+      "conclusions",
+      "alternatives",
+      "nextTests",
+      "limitations",
+      "sourceIds"
+    ]
+  },
+  "review_contract": {
+    "statuses": [
+      "draft",
+      "source_checked",
+      "specialist_reviewed",
+      "approved_for_scoped_release",
+      "withdrawn"
+    ],
+    "required": [
+      "status",
+      "reviewerId",
+      "reviewDate",
+      "nextReviewDate",
+      "scope",
+      "limitations"
+    ],
+    "rules": [
+      "Draft/source_checked records may have null reviewer/dates; never represent them as approved.",
+      "approved_for_scoped_release requires named reviewer, reviewDate, nextReviewDate and nonempty scope.",
+      "Clinical/safety release requires a qualified pharmacy/safety reviewer in addition to relevant taxonomic/analytical review.",
+      "A public source URL does not establish permissions to redistribute its images or datasets."
+    ]
+  },
+  "domain_rules": [
+    "Foreign keys must resolve to immutable versions.",
+    "declaredPlantId and verifiedPlantId are distinct; unresolved verifiedPlantId is null.",
+    "Clinical applicability requires exact preparation linkage or an explicitly reviewed equivalence claim.",
+    "Source class and claim scope must match; taxonomy cannot alone verify clinical efficacy.",
+    "Synthetic/abstract/model datasets cannot be described as measured, diagnostic or pharmacopoeial.",
+    "No unreviewed diagnostic species binding or real assay threshold enters a released quest.",
+    "Failed run controls block the specified inference, not automatically the whole product.",
+    "Held-out assessment keys never enter learner content payload.",
+    "Past attempts pin versions; source withdrawal triggers review rather than silent rescoring."
+  ]
+}

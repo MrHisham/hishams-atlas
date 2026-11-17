@@ -14,6 +14,19 @@ try {
   const errors=[];page.on('pageerror',error=>errors.push(error.message));
   await page.goto('http://127.0.0.1:4176/?graphics=Low&motion=off');
   await page.getByText('Saved on this device',{exact:true}).waitFor();
+  await page.getByRole('button',{name:'Field book',exact:true}).click();
+  await page.locator('.student-plant-card').first().waitFor();
+  if(await page.locator('.student-plant-card').count()!==150)throw Error('Production curriculum is incomplete');
+  await page.screenshot({path:path.join(root,'docs/curriculum-150.png')});
+  await page.getByRole('button',{name:'Fifteen learning modules',exact:true}).click();
+  await page.locator('.learning-module').first().waitFor();
+  if(await page.locator('.learning-module').count()!==15)throw Error('Production modules are incomplete');
+  await page.screenshot({path:path.join(root,'docs/production-curriculum.png')});
+  await page.getByRole('button',{name:'Research missions',exact:true}).click();
+  await page.getByLabel('Research mission',{exact:true}).selectOption('terpenoidresins');
+  await page.getByRole('img',{name:'Synthetic signal comparison, arbitrary teaching units'}).waitFor();
+  await page.locator('.mission-evidence').scrollIntoViewIfNeeded();
+  await page.screenshot({path:path.join(root,'docs/production-tier3-mission.png')});
   await page.getByRole('button',{name:'Library',exact:true}).click();
   await page.locator('input[type=file][accept*=".pdf"]').first().setInputFiles(path.join(root,'docs/Atlas-reading-sample.pdf'));
   await page.getByLabel('Search catalogue').fill('Atlas-reading-sample');
@@ -24,7 +37,7 @@ try {
   await page.getByText('Production build smoke check.',{exact:true}).waitFor();
   await page.screenshot({path:path.join(root,'docs/production-reader.png')});
   if(errors.length)throw Error(errors.join('\n'));
-  console.log('PASS: static production server, app startup, lazy PDF chunk/worker, local import, rendered page and saved annotation; no browser errors.');
+  console.log('PASS: static production server, 150 plants/fifteen modules, synthetic research mission, app startup, lazy PDF chunk/worker, local import, rendered page and saved annotation; no browser errors.');
 } finally {
   await browser?.close();
   server.kill();

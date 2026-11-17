@@ -1,0 +1,1247 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/phy-tolab/scientific-content.schema.json",
+  "title": "PHY TOLAB scientific content graph, draft 0.1.0",
+  "description": "Structural contract. Cross-record, scope, review-release and access-control rules require the domain validator; see SCIENCE-DOMAIN-RULES.json. No content is approved by schema conformance alone.",
+  "type": "object",
+  "required": [
+    "formatVersion",
+    "entities"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "formatVersion": {
+      "const": "0.1.0"
+    },
+    "entities": {
+      "type": "object",
+      "required": [
+        "plants",
+        "specimens",
+        "materials",
+        "preparations",
+        "constituents",
+        "targets",
+        "bioactivities",
+        "safetyRecords",
+        "clinicalEvidence",
+        "datasets",
+        "claims",
+        "sources",
+        "assets",
+        "objectives",
+        "quests",
+        "attempts",
+        "reports"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "plants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Plant"
+          }
+        },
+        "specimens": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Specimen"
+          }
+        },
+        "materials": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PlantMaterial"
+          }
+        },
+        "preparations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Preparation"
+          }
+        },
+        "constituents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Constituent"
+          }
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Target"
+          }
+        },
+        "bioactivities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Bioactivity"
+          }
+        },
+        "safetyRecords": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SafetyRecord"
+          }
+        },
+        "clinicalEvidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ClinicalEvidence"
+          }
+        },
+        "datasets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AnalyticalDataset"
+          }
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Claim"
+          }
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Source"
+          }
+        },
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Asset"
+          }
+        },
+        "objectives": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LearningObjective"
+          }
+        },
+        "quests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Quest"
+          }
+        },
+        "attempts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Attempt"
+          }
+        },
+        "reports": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Report"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "Review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "reviewerId",
+        "reviewDate",
+        "nextReviewDate",
+        "scope",
+        "limitations"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "draft",
+            "source_checked",
+            "specialist_reviewed",
+            "approved_for_scoped_release",
+            "withdrawn"
+          ]
+        },
+        "reviewerId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reviewDate": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "nextReviewDate": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "Plant": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "taxonAuthority",
+        "taxonId",
+        "acceptedName",
+        "synonyms",
+        "family",
+        "claimIds"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "taxonAuthority": {
+          "type": "string",
+          "minLength": 1
+        },
+        "taxonId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "acceptedName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "synonyms": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "Specimen": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "accession",
+        "declaredPlantId",
+        "verifiedPlantId",
+        "part",
+        "origin",
+        "custodyEvents",
+        "authenticationStatus",
+        "assetIds",
+        "claimIds"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "accession": {
+          "type": "string",
+          "minLength": 1
+        },
+        "declaredPlantId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verifiedPlantId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "part": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "origin": {
+          "type": "object"
+        },
+        "custodyEvents": {
+          "type": "array"
+        },
+        "authenticationStatus": {
+          "enum": [
+            "unassessed",
+            "declared_only",
+            "partially_authenticated",
+            "authenticated",
+            "rejected"
+          ]
+        },
+        "assetIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "PlantMaterial": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "plantId",
+        "part",
+        "lot",
+        "processingDescription",
+        "claimIds"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "plantId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "part": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lot": {
+          "type": "string",
+          "minLength": 1
+        },
+        "processingDescription": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "Preparation": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "materialId",
+        "type",
+        "specificationVersion",
+        "compositionScope",
+        "routeScope",
+        "claimIds"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "materialId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "specificationVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "compositionScope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "routeScope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "Constituent": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "moleculeAuthority",
+        "moleculeId",
+        "chemicalClass",
+        "structureAssetId",
+        "claimIds"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "moleculeAuthority": {
+          "type": "string",
+          "minLength": 1
+        },
+        "moleculeId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "chemicalClass": {
+          "type": "string",
+          "minLength": 1
+        },
+        "structureAssetId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "Target": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "authority",
+        "authorityId",
+        "name",
+        "claimIds"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "authority": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authorityId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "Bioactivity": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "targetId",
+        "interventionId",
+        "assayType",
+        "conditions",
+        "endpoint",
+        "estimate",
+        "uncertainty",
+        "claimIds"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "targetId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "interventionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assayType": {
+          "type": "string",
+          "minLength": 1
+        },
+        "conditions": {
+          "type": "object"
+        },
+        "endpoint": {
+          "type": "string",
+          "minLength": 1
+        },
+        "estimate": {
+          "type": "object"
+        },
+        "uncertainty": {
+          "type": "object"
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "SafetyRecord": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "hazard",
+        "exposureScope",
+        "preparationIds",
+        "evidenceType",
+        "jurisdiction",
+        "claimIds"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "hazard": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exposureScope": {
+          "type": "object"
+        },
+        "preparationIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "evidenceType": {
+          "type": "string",
+          "minLength": 1
+        },
+        "jurisdiction": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ClinicalEvidence": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "sourceId",
+        "design",
+        "population",
+        "preparationId",
+        "comparator",
+        "outcome",
+        "timepoint",
+        "estimate",
+        "uncertainty",
+        "limitations",
+        "claimIds"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "sourceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "design": {
+          "type": "string",
+          "minLength": 1
+        },
+        "population": {
+          "type": "object"
+        },
+        "preparationId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "comparator": {
+          "type": "object"
+        },
+        "outcome": {
+          "type": "object"
+        },
+        "timepoint": {
+          "type": "string",
+          "minLength": 1
+        },
+        "estimate": {
+          "type": "object"
+        },
+        "uncertainty": {
+          "type": "object"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "AnalyticalDataset": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "originClass",
+        "methodId",
+        "methodVersion",
+        "referenceIds",
+        "sampleIds",
+        "controlIds",
+        "units",
+        "normalizationBasis",
+        "acceptanceRuleOrigin",
+        "contentHash",
+        "review"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "originClass": {
+          "enum": [
+            "measured_reference",
+            "curated_synthetic",
+            "mathematical_model"
+          ]
+        },
+        "methodId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "methodVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "referenceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "sampleIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "controlIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "units": {
+          "type": "string",
+          "minLength": 1
+        },
+        "normalizationBasis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "acceptanceRuleOrigin": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contentHash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "review": {
+          "$ref": "#/$defs/Review"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Claim": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "statement",
+        "scope",
+        "sourceIds",
+        "publicationLocators",
+        "evidenceType",
+        "verificationStatus",
+        "review"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "object",
+          "required": [
+            "taxonIds",
+            "materialIds",
+            "preparationIds",
+            "limits"
+          ],
+          "properties": {
+            "taxonIds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "materialIds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "preparationIds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "limits": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "publicationLocators": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "evidenceType": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verificationStatus": {
+          "enum": [
+            "draft",
+            "source_checked",
+            "specialist_reviewed",
+            "approved_for_scoped_release",
+            "withdrawn"
+          ]
+        },
+        "review": {
+          "$ref": "#/$defs/Review"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Source": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "organizationOrAuthors",
+        "title",
+        "publicationDate",
+        "urlOrIdentifier",
+        "accessedDate",
+        "scope"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "organizationOrAuthors": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "publicationDate": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "urlOrIdentifier": {
+          "type": "string",
+          "minLength": 1
+        },
+        "accessedDate": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "Asset": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "sourceId",
+        "license",
+        "permissionRecord",
+        "scaleOrNotApplicable",
+        "diagnosticScope",
+        "contentHash",
+        "review"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "sourceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "license": {
+          "type": "string",
+          "minLength": 1
+        },
+        "permissionRecord": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scaleOrNotApplicable": {
+          "type": "string",
+          "minLength": 1
+        },
+        "diagnosticScope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contentHash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "review": {
+          "$ref": "#/$defs/Review"
+        }
+      },
+      "additionalProperties": false
+    },
+    "LearningObjective": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "competency",
+        "observablePerformance",
+        "prerequisites",
+        "rubricId",
+        "transferRequirements"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "competency": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observablePerformance": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prerequisites": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "rubricId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "transferRequirements": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Quest": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "scenario",
+        "engine",
+        "objectiveIds",
+        "datasetIds",
+        "allowedActions",
+        "rubricId",
+        "prerequisites"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "scenario": {
+          "type": "string",
+          "minLength": 1
+        },
+        "engine": {
+          "enum": [
+            "specimen-workbench",
+            "analytical-workbench",
+            "research-dossier"
+          ]
+        },
+        "objectiveIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "datasetIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "allowedActions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "rubricId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prerequisites": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "Attempt": {
+      "type": "object",
+      "required": [
+        "id",
+        "learnerPseudonym",
+        "questId",
+        "questVersion",
+        "datasetVersions",
+        "rubricVersion",
+        "assistance",
+        "firstResponse",
+        "reportId",
+        "scores",
+        "criticalFlags",
+        "timestamp"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "learnerPseudonym": {
+          "type": "string",
+          "minLength": 1
+        },
+        "questId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "questVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "datasetVersions": {
+          "type": "object"
+        },
+        "rubricVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assistance": {
+          "type": "object"
+        },
+        "firstResponse": {
+          "type": "object"
+        },
+        "reportId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scores": {
+          "type": "object"
+        },
+        "criticalFlags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "timestamp": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "Report": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "attemptId",
+        "evidenceIds",
+        "calculations",
+        "conclusions",
+        "alternatives",
+        "nextTests",
+        "limitations",
+        "sourceIds"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "attemptId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidenceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "calculations": {
+          "type": "array"
+        },
+        "conclusions": {
+          "type": "array"
+        },
+        "alternatives": {
+          "type": "array"
+        },
+        "nextTests": {
+          "type": "array"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

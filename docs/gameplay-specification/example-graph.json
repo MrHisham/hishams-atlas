@@ -1,0 +1,98 @@
+{
+  "formatVersion": "0.1.0",
+  "entities": {
+    "plants": [
+      {
+        "id": "PL-PEPPERMINT",
+        "version": "0.1.0",
+        "taxonAuthority": "Pending reviewer confirmation",
+        "taxonId": null,
+        "acceptedName": "Mentha \u00d7 piperita",
+        "synonyms": [],
+        "family": "Lamiaceae",
+        "claimIds": [
+          "CLM-DECLARED-NAME"
+        ]
+      }
+    ],
+    "specimens": [
+      {
+        "id": "SP-TRAIN-001",
+        "version": "0.1.0",
+        "accession": "TRAIN-001",
+        "declaredPlantId": "PL-PEPPERMINT",
+        "verifiedPlantId": null,
+        "part": "leaf",
+        "origin": {
+          "kind": "synthetic teaching accession"
+        },
+        "custodyEvents": [],
+        "authenticationStatus": "declared_only",
+        "assetIds": [],
+        "claimIds": [
+          "CLM-DECLARED-NAME"
+        ]
+      }
+    ],
+    "materials": [],
+    "preparations": [],
+    "constituents": [],
+    "targets": [],
+    "bioactivities": [],
+    "safetyRecords": [],
+    "clinicalEvidence": [],
+    "datasets": [],
+    "claims": [
+      {
+        "id": "CLM-DECLARED-NAME",
+        "version": "0.1.0",
+        "statement": "The training accession declares Mentha \u00d7 piperita leaf; independent authentication is unresolved.",
+        "scope": {
+          "taxonIds": [
+            "PL-PEPPERMINT"
+          ],
+          "materialIds": [],
+          "preparationIds": [],
+          "limits": [
+            "Declaration only; no authenticated diagnostic assertion."
+          ]
+        },
+        "sourceIds": [
+          "SRC-PEP-LEAF"
+        ],
+        "publicationLocators": [
+          "Overview and botanical-name/material fields; full claim appraisal pending."
+        ],
+        "evidenceType": "declared accession metadata; scoped source lookup",
+        "verificationStatus": "draft",
+        "review": {
+          "status": "draft",
+          "reviewerId": null,
+          "reviewDate": null,
+          "nextReviewDate": null,
+          "scope": "Declaration and source scope only.",
+          "limitations": [
+            "No expert sign-off or real specimen."
+          ]
+        }
+      }
+    ],
+    "sources": [
+      {
+        "id": "SRC-PEP-LEAF",
+        "version": "0.1.0",
+        "organizationOrAuthors": "EMA / HMPC",
+        "title": "Menthae piperitae folium",
+        "publicationDate": null,
+        "urlOrIdentifier": "https://www.ema.europa.eu/en/medicines/herbal/menthae-piperitae-folium",
+        "accessedDate": "2026-11-02",
+        "scope": "Leaf/material source; exact taxonomic/clinical claims require separate scoped review."
+      }
+    ],
+    "assets": [],
+    "objectives": [],
+    "quests": [],
+    "attempts": [],
+    "reports": []
+  }
+}

@@ -28,3 +28,7 @@ Each app entry contains organization, stable URL, access date, evidence category
 6. Run tests and inspect the field-book record at desktop and tablet widths.
 
 The lab chromatogram is a pair of Gaussian curves in arbitrary units, unchanged by the selected notebook context. It is labeled synthetic and makes no chemical identification. It is not a simulated validated extraction or analysis method. The compound-class curriculum, spectroscopy, validated structures and microscopy remain future work.
+
+## Expansion on 1 November 2026
+
+The field book now covers the user’s 50 educational priorities through five ten-plant modules and 55 practice questions/cases. See CURRICULUM.md for section-specific review boundaries and CURRICULUM-SOURCES.md for all reference links. New metadata and chemistry study mappings are provisional rather than claimed as independently reviewed monograph content. No validated microscopic characters are invented. The seven-section format is implemented; a complete expert-reviewed scientific reference remains unfinished. Old eight-species source checks above are retained as historical provenance.

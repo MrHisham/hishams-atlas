@@ -17,7 +17,7 @@ class AtlasDB extends Dexie {
     constructor() { super('hishams-atlas-5'); this.version(1).stores({ state: 'id', files: 'id', snapshots: 'id' }); }
 }
 export const db = new AtlasDB();
-export async function loadState() { const row = await db.state.get('main'); return row ? validateState(row.value) : initialState(); }
+export async function loadState() { const row = await db.state.get('main'); if(row && !row.value.learning && !(await db.snapshots.get('before-curriculum-5.1'))) await db.snapshots.put({id:'before-curriculum-5.1',value:row.value}); return row ? validateState(row.value) : initialState(); }
 let queue = Promise.resolve();
 export function saveState(value: State) { queue = queue.catch(() => { }).then(async () => { await db.state.put({ id: 'main', value }); }); return queue; }
 export async function attachFile(file: File) { const id = crypto.randomUUID(); await db.files.put({ id, blob: file, name: file.name }); return id; }

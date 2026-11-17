@@ -1,0 +1,972 @@
+{
+  "version": "0.1.0",
+  "status": "prototype-only; reviewer release gates incomplete",
+  "quests": [
+    {
+      "id": "Q01",
+      "title": "An accession is not an identification",
+      "department": "Botanical Identification",
+      "mechanic": "specimen-workbench",
+      "plant_context_ids": [
+        "peppermint",
+        "chamomile"
+      ],
+      "competencies": [
+        "MAT-TRACE",
+        "BOT-OBS"
+      ],
+      "prerequisites": [],
+      "target_minutes": 8,
+      "scenario": "The institute receives two sealed virtual accessions. A common name and a supplier assertion have been mistaken for authentication.",
+      "player_actions": [
+        "Open accession envelopes and compare label fields.",
+        "Link the declared taxon and plant part to an accession, retaining the supplier attribution.",
+        "Submit an authentication-status decision and a two-sentence evidence note."
+      ],
+      "dataset": {
+        "id": "DS-Q01",
+        "version": "0.1.0",
+        "origin": "curator-designed synthetic teaching fixture",
+        "not_measured": true,
+        "species_diagnostic": false,
+        "review_status": "design fixture; not scientifically approved for learner release",
+        "reviewer": null,
+        "source_ids": [
+          "SRC-WHO"
+        ],
+        "data": {
+          "accessions": [
+            {
+              "id": "ACC-A",
+              "declared_taxon": "Mentha × piperita",
+              "declared_part": "leaf",
+              "supplier": "S-01",
+              "voucher": null,
+              "authentication": "supplier assertion only"
+            },
+            {
+              "id": "ACC-B",
+              "declared_taxon": "Matricaria chamomilla",
+              "declared_part": null,
+              "supplier": "S-02",
+              "voucher": "V-B",
+              "authentication": "voucher reference supplied, not yet checked"
+            }
+          ]
+        }
+      },
+      "source_ids": [
+        "SRC-WHO"
+      ]
+    },
+    {
+      "id": "Q02",
+      "title": "Follow the key, then stop at its boundary",
+      "department": "Botanical Identification",
+      "mechanic": "specimen-workbench",
+      "plant_context_ids": [
+        "peppermint",
+        "rosemary"
+      ],
+      "competencies": [
+        "BOT-ID",
+        "BOT-OBS"
+      ],
+      "prerequisites": [
+        "Q01"
+      ],
+      "target_minutes": 10,
+      "scenario": "A training key links observable features to anonymous reference cards. It is not a diagnostic key for peppermint or rosemary.",
+      "player_actions": [
+        "Reveal one feature card at a time.",
+        "Trace each choice through the key and attach supporting observations.",
+        "Choose a reference-card match and state the limit of that match."
+      ],
+      "dataset": {
+        "id": "DS-Q02",
+        "version": "0.1.0",
+        "origin": "curator-designed synthetic teaching fixture",
+        "not_measured": true,
+        "species_diagnostic": false,
+        "review_status": "design fixture; not scientifically approved for learner release",
+        "reviewer": null,
+        "source_ids": [
+          "SRC-WHO"
+        ],
+        "data": {
+          "training_only": true,
+          "observations": {
+            "arrangement": "opposite",
+            "margin": "toothed",
+            "venation": "unresolved"
+          },
+          "key": [
+            {
+              "if": "arrangement=alternate",
+              "then": "REF-C"
+            },
+            {
+              "if": "arrangement=opposite AND margin=entire",
+              "then": "REF-B"
+            },
+            {
+              "if": "arrangement=opposite AND margin=toothed",
+              "then": "REF-A"
+            }
+          ],
+          "taxon_bindings": null,
+          "asset_status": "Real species-bound image/key pack requires authenticated sources, licensing and botanist approval before release."
+        }
+      },
+      "source_ids": [
+        "SRC-WHO"
+      ]
+    },
+    {
+      "id": "Q03",
+      "title": "Root or underground stem?",
+      "department": "Botanical Identification",
+      "mechanic": "specimen-workbench",
+      "plant_context_ids": [
+        "ginger",
+        "turmeric"
+      ],
+      "competencies": [
+        "BOT-OBS",
+        "MAT-TRACE"
+      ],
+      "prerequisites": [
+        "Q02"
+      ],
+      "target_minutes": 10,
+      "scenario": "The virtual material sheet says “root,” but a supplied structural-description card records nodes, internodes and a bud.",
+      "player_actions": [
+        "Separate the supplier term from the structural observations.",
+        "Annotate the node, internode and bud descriptions on a schematic.",
+        "Classify the organ type and open a metadata discrepancy."
+      ],
+      "dataset": {
+        "id": "DS-Q03",
+        "version": "0.1.0",
+        "origin": "curator-designed synthetic teaching fixture",
+        "not_measured": true,
+        "species_diagnostic": false,
+        "review_status": "design fixture; not scientifically approved for learner release",
+        "reviewer": null,
+        "source_ids": [
+          "SRC-WHO"
+        ],
+        "data": {
+          "supplier_term": "root",
+          "observed_description": [
+            "nodes",
+            "internodes",
+            "bud"
+          ],
+          "image_origin": "abstract schematic, not a diagnostic ginger or turmeric image",
+          "organ_options": [
+            "root",
+            "rhizome / underground stem",
+            "seed",
+            "leaf"
+          ]
+        }
+      },
+      "source_ids": [
+        "SRC-WHO"
+      ]
+    },
+    {
+      "id": "Q04",
+      "title": "A justified unresolved identification",
+      "department": "Botanical Identification",
+      "mechanic": "specimen-workbench",
+      "plant_context_ids": [
+        "fennel",
+        "chamomile"
+      ],
+      "competencies": [
+        "BOT-ID",
+        "DATA-INFER"
+      ],
+      "prerequisites": [
+        "Q03"
+      ],
+      "target_minutes": 10,
+      "scenario": "Two anonymous reference materials share the visible features. The distinguishing fruit view is unavailable.",
+      "player_actions": [
+        "Build a feature-by-reference comparison.",
+        "Mark missing evidence rather than guessing.",
+        "Select the next observation most likely to distinguish the candidates."
+      ],
+      "dataset": {
+        "id": "DS-Q04",
+        "version": "0.1.0",
+        "origin": "curator-designed synthetic teaching fixture",
+        "not_measured": true,
+        "species_diagnostic": false,
+        "review_status": "design fixture; not scientifically approved for learner release",
+        "reviewer": null,
+        "source_ids": [
+          "SRC-WHO"
+        ],
+        "data": {
+          "observed": {
+            "F1": "present",
+            "F2": "present",
+            "fruit_character": "unavailable"
+          },
+          "references": {
+            "REF-D": {
+              "F1": "present",
+              "F2": "present",
+              "fruit_character": "pattern-D"
+            },
+            "REF-E": {
+              "F1": "present",
+              "F2": "present",
+              "fruit_character": "pattern-E"
+            }
+          },
+          "taxon_bindings": null,
+          "next_options": [
+            "obtain an authenticated diagnostic fruit view",
+            "repeat a shared F1 observation",
+            "infer identity from color of the app motif"
+          ]
+        }
+      },
+      "source_ids": [
+        "SRC-WHO"
+      ]
+    },
+    {
+      "id": "Q05",
+      "title": "Build a defensible herbarium record",
+      "department": "Botanical Identification",
+      "mechanic": "research-dossier",
+      "plant_context_ids": [
+        "lavender",
+        "rosemary"
+      ],
+      "competencies": [
+        "MAT-TRACE",
+        "REPORT"
+      ],
+      "prerequisites": [
+        "Q04"
+      ],
+      "target_minutes": 12,
+      "scenario": "A digital herbarium submission merges observations from two accessions and omits the source of an image.",
+      "player_actions": [
+        "Attach each observation to its accession.",
+        "Keep a missing image-license field explicit.",
+        "Submit an accession-specific record with separate declared and verified identity fields."
+      ],
+      "dataset": {
+        "id": "DS-Q05",
+        "version": "0.1.0",
+        "origin": "curator-designed synthetic teaching fixture",
+        "not_measured": true,
+        "species_diagnostic": false,
+        "review_status": "design fixture; not scientifically approved for learner release",
+        "reviewer": null,
+        "source_ids": [
+          "SRC-WHO"
+        ],
+        "data": {
+          "accessions": [
+            "ACC-L",
+            "ACC-R"
+          ],
+          "events": [
+            {
+              "accession": "ACC-L",
+              "event": "supplier label received",
+              "time": "T1"
+            },
+            {
+              "accession": "ACC-R",
+              "event": "reference image viewed",
+              "time": "T2",
+              "asset_source": null
+            }
+          ],
+          "bad_record": {
+            "accession": "ACC-L",
+            "claims": [
+              "supplier label received",
+              "reference image viewed"
+            ],
+            "identity_status": "confirmed"
+          }
+        }
+      },
+      "source_ids": [
+        "SRC-WHO"
+      ]
+    },
+    {
+      "id": "Q06",
+      "title": "Microscopy needs a reference and a valid view",
+      "department": "Pharmacognosy",
+      "mechanic": "specimen-workbench",
+      "plant_context_ids": [
+        "chamomile",
+        "peppermint"
+      ],
+      "competencies": [
+        "QC-CONTROL",
+        "BOT-ID"
+      ],
+      "prerequisites": [
+        "Q05"
+      ],
+      "target_minutes": 12,
+      "scenario": "A microscope viewer offers symbolic feature overlays. The first view is blurred; an authenticated reference image has not yet been licensed.",
+      "player_actions": [
+        "Assess image interpretability before comparing features.",
+        "Request the readable synthetic training view.",
+        "Compare coded features with anonymous reference patterns and qualify the result."
+      ],
+      "dataset": {
+        "id": "DS-Q06",
+        "version": "0.1.0",
+        "origin": "curator-designed synthetic teaching fixture",
+        "not_measured": true,
+        "species_diagnostic": false,
+        "review_status": "design fixture; not scientifically approved for learner release",
+        "reviewer": null,
+        "source_ids": [
+          "SRC-WHO"
+        ],
+        "data": {
+          "first_view": {
+            "focus_control": "fail",
+            "features": "unreadable"
+          },
+          "second_training_view": {
+            "focus_control": "pass",
+            "features": [
+              "MIC-A",
+              "MIC-B"
+            ]
+          },
+          "reference_patterns": {
+            "REF-M": [
+              "MIC-A",
+              "MIC-B"
+            ],
+            "REF-N": [
+              "MIC-A",
+              "MIC-C"
+            ]
+          },
+          "taxon_bindings": null,
+          "asset_status": "Species-specific micrographs, scale bars, diagnostic descriptions and permissions are mandatory SME-gated assets."
+        }
+      },
+      "source_ids": [
+        "SRC-WHO"
+      ]
+    },
+    {
+      "id": "Q07",
+      "title": "A quality percentage, not a universal limit",
+      "department": "Pharmacognosy",
+      "mechanic": "analytical-workbench",
+      "plant_context_ids": [
+        "chamomile",
+        "senna"
+      ],
+      "competencies": [
+        "QC-QUANT",
+        "DATA-INFER"
+      ],
+      "prerequisites": [
+        "Q06"
+      ],
+      "target_minutes": 12,
+      "scenario": "A fictional quality worksheet reports total material and foreign-material masses. A scenario-only limit is supplied.",
+      "player_actions": [
+        "Check numerator and denominator units.",
+        "Calculate the percentage and compare it with the supplied teaching limit.",
+        "Write a sample-specific concern without asserting a pharmacopoeial specification."
+      ],
+      "dataset": {
+        "id": "DS-Q07",
+        "version": "0.1.0",
+        "origin": "curator-designed synthetic teaching fixture",
+        "not_measured": true,
+        "species_diagnostic": false,
+        "review_status": "design fixture; not scientifically approved for learner release",
+        "reviewer": null,
+        "source_ids": [
+          "SRC-WHO"
+        ],
+        "data": {
+          "total_mass_g": 10.0,
+          "foreign_material_mass_g": 0.4,
+          "scenario_limit_percent": 2.0,
+          "formula": "100 * foreign_material_mass / total_mass",
+          "limit_origin": "fictional teaching specification; not a pharmacopoeial limit",
+          "sampling": "one virtual subsample; representativeness unresolved"
+        }
+      },
+      "source_ids": [
+        "SRC-WHO"
+      ]
+    },
+    {
+      "id": "Q08",
+      "title": "Failed control, invalid conclusion",
+      "department": "Pharmacognosy",
+      "mechanic": "analytical-workbench",
+      "plant_context_ids": [
+        "milkthistle",
+        "greentea"
+      ],
+      "competencies": [
+        "QC-CONTROL",
+        "DATA-INFER"
+      ],
+      "prerequisites": [
+        "Q07"
+      ],
+      "target_minutes": 10,
+      "scenario": "An attractive instrument result is available, but the check-standard result lies outside the fictional run-acceptance range.",
+      "player_actions": [
+        "Inspect control results before opening the batch verdict.",
+        "Compare the control against the declared scenario range.",
+        "Invalidate the run for the intended inference and request investigation/retest."
+      ],
+      "dataset": {
+        "id": "DS-Q08",
+        "version": "0.1.0",
+        "origin": "curator-designed synthetic teaching fixture",
+        "not_measured": true,
+        "species_diagnostic": false,
+        "review_status": "design fixture; not scientifically approved for learner release",
+        "reviewer": null,
+        "source_ids": [
+          "SRC-ICH"
+        ],
+        "data": {
+          "check_standard_expected_units": 100,
+          "check_standard_observed_units": 70,
+          "scenario_acceptance_units": [
+            95,
+            105
+          ],
+          "sample_reported_units": 88,
+          "acceptance_origin": "fictional run rule; not a validated assay criterion",
+          "instrument_method_id": "TRAIN-M1"
+        }
+      },
+      "source_ids": [
+        "SRC-ICH"
+      ]
+    },
+    {
+      "id": "Q09",
+      "title": "The TLC blank changes the conclusion",
+      "department": "Pharmacognosy",
+      "mechanic": "analytical-workbench",
+      "plant_context_ids": [
+        "turmeric",
+        "ginger"
+      ],
+      "competencies": [
+        "QC-QUANT",
+        "QC-CONTROL"
+      ],
+      "prerequisites": [
+        "Q08"
+      ],
+      "target_minutes": 12,
+      "scenario": "A synthetic TLC viewer displays a sample spot and a nearby reference spot, but the blank also contains a signal.",
+      "player_actions": [
+        "Read distances from the same baseline.",
+        "Calculate Rf values.",
+        "Inspect the blank and explain why a match cannot establish identity."
+      ],
+      "dataset": {
+        "id": "DS-Q09",
+        "version": "0.1.0",
+        "origin": "curator-designed synthetic teaching fixture",
+        "not_measured": true,
+        "species_diagnostic": false,
+        "review_status": "design fixture; not scientifically approved for learner release",
+        "reviewer": null,
+        "source_ids": [
+          "SRC-WHO",
+          "SRC-ICH"
+        ],
+        "data": {
+          "solvent_front_distance_units": 8.0,
+          "spot_distances": {
+            "reference": 2.4,
+            "sample": 2.48,
+            "blank": 2.4
+          },
+          "Rf_formula": "spot distance / solvent-front distance",
+          "scenario_Rf_comparison_tolerance": 0.03,
+          "run_rule": "blank must have no signal in the comparison region",
+          "compound_assignment": null,
+          "origin": "synthetic distances; no real botanical chromatogram or solvent procedure"
+        }
+      },
+      "source_ids": [
+        "SRC-WHO",
+        "SRC-ICH"
+      ]
+    },
+    {
+      "id": "Q10",
+      "title": "One plant name, different materials",
+      "department": "Pharmacognosy",
+      "mechanic": "research-dossier",
+      "plant_context_ids": [
+        "psyllium",
+        "peppermint"
+      ],
+      "competencies": [
+        "MAT-TRACE",
+        "EVID-SCOPE"
+      ],
+      "prerequisites": [
+        "Q09"
+      ],
+      "target_minutes": 12,
+      "scenario": "A product claim cites a source for a different plant material or preparation.",
+      "player_actions": [
+        "Link each evidence record to its exact taxon, part and preparation.",
+        "Mark unsupported transfers.",
+        "Request a matching preparation-specific source."
+      ],
+      "dataset": {
+        "id": "DS-Q10",
+        "version": "0.1.0",
+        "origin": "curator-designed synthetic teaching fixture",
+        "not_measured": true,
+        "species_diagnostic": false,
+        "review_status": "design fixture; not scientifically approved for learner release",
+        "reviewer": null,
+        "source_ids": [
+          "SRC-LEAF",
+          "SRC-OIL",
+          "SRC-WHO"
+        ],
+        "data": {
+          "pairs": [
+            {
+              "product": "P-LEAF",
+              "taxon": "Mentha × piperita",
+              "material": "leaf",
+              "cited_record": "E-OIL",
+              "record_material": "essential oil"
+            },
+            {
+              "product": "P-HUSK",
+              "taxon": "Plantago ovata",
+              "material": "seed husk",
+              "cited_record": "E-SEED",
+              "record_material": "whole seed"
+            }
+          ],
+          "clinical_outcomes": "not supplied; no efficacy conclusion requested"
+        }
+      },
+      "source_ids": [
+        "SRC-LEAF",
+        "SRC-OIL",
+        "SRC-WHO"
+      ]
+    },
+    {
+      "id": "Q11",
+      "title": "Chromatogram investigator: the missing signal",
+      "department": "Phytochemistry",
+      "mechanic": "analytical-workbench",
+      "plant_context_ids": [
+        "greentea",
+        "milkthistle"
+      ],
+      "competencies": [
+        "QC-QUANT",
+        "DATA-INFER"
+      ],
+      "prerequisites": [
+        "Q10"
+      ],
+      "target_minutes": 15,
+      "scenario": "Two fictional comparable profiles have passed the specified run controls. Determine the largest signal discrepancy and its limited meaning.",
+      "player_actions": [
+        "Verify matching method IDs, normalization and valid controls.",
+        "Compare each coded peak in a table and trace.",
+        "Select the largest difference and propose at least two non-fraud explanations plus follow-up testing."
+      ],
+      "dataset": {
+        "id": "DS-Q11",
+        "version": "0.1.0",
+        "origin": "curator-designed synthetic teaching fixture",
+        "not_measured": true,
+        "species_diagnostic": false,
+        "review_status": "design fixture; not scientifically approved for learner release",
+        "reviewer": null,
+        "source_ids": [
+          "SRC-ICH"
+        ],
+        "data": {
+          "peak_ids": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "reference_normalized_signals": [
+            100,
+            80,
+            120,
+            60
+          ],
+          "sample_normalized_signals": [
+            98,
+            78,
+            36,
+            59
+          ],
+          "method_ids": [
+            "TRAIN-H1",
+            "TRAIN-H1"
+          ],
+          "normalization": "same internal-reference scaling and dry-material basis; stipulated in this fixture",
+          "controls": "all scenario controls pass",
+          "signal_units": "arbitrary normalized teaching units",
+          "peak_compound_identities": null,
+          "model": "fixed vector comparison, not a chemical-composition simulator"
+        }
+      },
+      "source_ids": [
+        "SRC-ICH"
+      ]
+    },
+    {
+      "id": "Q12",
+      "title": "Structure, potency and the clinical inference gap",
+      "department": "Phytochemistry",
+      "mechanic": "analytical-workbench",
+      "plant_context_ids": [
+        "peppermint",
+        "lavender"
+      ],
+      "competencies": [
+        "CHEM-CLASS",
+        "DATA-INFER"
+      ],
+      "prerequisites": [
+        "Q11"
+      ],
+      "target_minutes": 15,
+      "scenario": "A generic functional-group card and two mathematical response curves are available. Neither curve is a measurement of a plant constituent.",
+      "player_actions": [
+        "Classify R–OH as an alcohol-group teaching cue.",
+        "Read the response curves and their common maximum.",
+        "Compare model EC50 values and state what the experiment cannot establish."
+      ],
+      "dataset": {
+        "id": "DS-Q12",
+        "version": "0.1.0",
+        "origin": "curator-designed synthetic teaching fixture",
+        "not_measured": true,
+        "species_diagnostic": false,
+        "review_status": "design fixture; not scientifically approved for learner release",
+        "reviewer": null,
+        "source_ids": [
+          "SRC-ICH"
+        ],
+        "data": {
+          "functional_group_card": "R–OH; R is an unspecified organic group",
+          "models": {
+            "A": {
+              "Emax": 100,
+              "EC50": 2
+            },
+            "B": {
+              "Emax": 100,
+              "EC50": 8
+            }
+          },
+          "formula": "response = Emax*x/(EC50+x)",
+          "x_values": [
+            0,
+            1,
+            2,
+            4,
+            8,
+            16
+          ],
+          "x_units": "dimensionless model input; never a human dose",
+          "y_units": "model response units",
+          "target": null,
+          "compound_identities": null,
+          "clinical_studies": null
+        }
+      },
+      "source_ids": [
+        "SRC-ICH"
+      ]
+    },
+    {
+      "id": "Q13",
+      "title": "A safety signal is not a proven cause",
+      "department": "Phytochemistry",
+      "mechanic": "research-dossier",
+      "plant_context_ids": [
+        "stjohnswort"
+      ],
+      "competencies": [
+        "SAFE-ESC",
+        "DATA-INFER"
+      ],
+      "prerequisites": [
+        "Q10"
+      ],
+      "target_minutes": 12,
+      "scenario": "A fictional patient dossier contains prescribed cyclosporin, newly reported St. John’s wort exposure and incomplete event information. A later triage card reports collapse.",
+      "player_actions": [
+        "Construct the exposure/event timeline and identify the interaction-review concern using the source card.",
+        "List missing information and competing explanations.",
+        "Respond to the collapse card by seeking urgent professional assessment, without offering a treatment or medication-change plan."
+      ],
+      "dataset": {
+        "id": "DS-Q13",
+        "version": "0.1.0",
+        "origin": "curator-designed synthetic teaching fixture",
+        "not_measured": true,
+        "species_diagnostic": false,
+        "review_status": "design fixture; not scientifically approved for learner release",
+        "reviewer": null,
+        "source_ids": [
+          "SRC-SJW",
+          "SRC-TGA"
+        ],
+        "data": {
+          "timeline": [
+            {
+              "day": 0,
+              "event": "prescribed cyclosporin listed"
+            },
+            {
+              "day": 10,
+              "event": "St. John’s wort product reported; preparation uncertain"
+            },
+            {
+              "day": 14,
+              "event": "new adverse event reported; no diagnostic workup provided"
+            }
+          ],
+          "confounders": [
+            "intercurrent illness",
+            "incomplete medicine history"
+          ],
+          "later_triage_card": "collapse reported in this fictional case",
+          "diagnosis": null,
+          "product_details": null
+        }
+      },
+      "source_ids": [
+        "SRC-SJW",
+        "SRC-TGA"
+      ]
+    },
+    {
+      "id": "Q14",
+      "title": "Evidence belongs to a preparation and an outcome",
+      "department": "Phytochemistry",
+      "mechanic": "research-dossier",
+      "plant_context_ids": [
+        "peppermint",
+        "greentea"
+      ],
+      "competencies": [
+        "EVID-SCOPE",
+        "QC-QUANT"
+      ],
+      "prerequisites": [
+        "Q11"
+      ],
+      "target_minutes": 15,
+      "scenario": "Two invented study summaries are being used to market a third, different preparation.",
+      "player_actions": [
+        "Compare design, comparator and exact intervention identity.",
+        "Calculate the randomized trial risk difference in percentage points.",
+        "Interpret its supplied uncertainty interval and reject an unsupported product transfer."
+      ],
+      "dataset": {
+        "id": "DS-Q14",
+        "version": "0.1.0",
+        "origin": "curator-designed synthetic teaching fixture",
+        "not_measured": true,
+        "species_diagnostic": false,
+        "review_status": "design fixture; not scientifically approved for learner release",
+        "reviewer": null,
+        "source_ids": [
+          "SRC-LEAF",
+          "SRC-OIL"
+        ],
+        "data": {
+          "studies": [
+            {
+              "id": "E1",
+              "design": "uncontrolled before–after",
+              "n": 20,
+              "pre_score": 20,
+              "post_score": 12,
+              "preparation": "TRAIN-PREP-A",
+              "clinical_identity": "none; synthetic data"
+            },
+            {
+              "id": "E2",
+              "design": "randomized blinded parallel comparison",
+              "intervention": "TRAIN-PREP-A",
+              "control": "placebo",
+              "responders_treatment": 30,
+              "n_treatment": 100,
+              "responders_control": 20,
+              "n_control": 100,
+              "risk_difference_approx_95CI_percentage_points": [
+                -2,
+                22
+              ],
+              "analysis": "fictional intention-to-treat summary; equal 5% follow-up loss stipulated"
+            }
+          ],
+          "marketed_product": "TRAIN-PREP-B, different composition/route details not supplied",
+          "endpoint": "fictional binary symptom response; not a real botanical outcome",
+          "interval_method": "rounded teaching interval, approximately normal risk-difference interval"
+        }
+      },
+      "source_ids": [
+        "SRC-LEAF",
+        "SRC-OIL"
+      ]
+    },
+    {
+      "id": "Q15",
+      "title": "The Mystery of the Herbal Capsules",
+      "department": "Phytochemistry",
+      "mechanic": "research-dossier",
+      "plant_context_ids": [
+        "peppermint",
+        "greentea",
+        "milkthistle"
+      ],
+      "competencies": [
+        "MAT-TRACE",
+        "QC-CONTROL",
+        "DATA-INFER",
+        "SAFE-ESC",
+        "EVID-SCOPE",
+        "REPORT"
+      ],
+      "prerequisites": [
+        "Q12",
+        "Q13",
+        "Q14"
+      ],
+      "target_minutes": 35,
+      "scenario": "Two virtual capsule batches carry the same botanical declaration. Evidence is incomplete and one valid analytical profile differs. The learner submits a qualified research report.",
+      "player_actions": [
+        "Reconcile batch/accession/specimen/material/preparation records.",
+        "Inspect authentication and microscopy records, retaining missing evidence.",
+        "Check analytical comparability and controls; quantify the discrepant signal.",
+        "Separate observations from hypotheses and choose discriminating follow-up tests.",
+        "Evaluate a promotional clinical claim for a different preparation.",
+        "Submit a structured report, cite evidence IDs and defend the uncertainty statement."
+      ],
+      "dataset": {
+        "id": "DS-Q15",
+        "version": "0.1.0",
+        "origin": "curator-designed synthetic teaching fixture",
+        "not_measured": true,
+        "species_diagnostic": false,
+        "review_status": "design fixture; not scientifically approved for learner release",
+        "reviewer": null,
+        "source_ids": [
+          "SRC-WHO",
+          "SRC-ICH",
+          "SRC-LEAF",
+          "SRC-OIL"
+        ],
+        "data": {
+          "declared_label": {
+            "taxon": "Mentha × piperita",
+            "part": "leaf",
+            "preparation": "TRAIN-CAPSULE-P"
+          },
+          "batches": [
+            {
+              "id": "LOT-A",
+              "accession": "CAP-A",
+              "supplier": "S-A",
+              "authentication_record": "AR-A checked in the fictional dossier",
+              "microscopy_record": "MIC-CAP-A present in dossier"
+            },
+            {
+              "id": "LOT-B",
+              "accession": "CAP-B",
+              "supplier": "S-B",
+              "authentication_record": "supplier assertion only",
+              "microscopy_record": null
+            }
+          ],
+          "analysis": {
+            "method": "TRAIN-H-CAP",
+            "comparable_preparation_and_normalization": true,
+            "scenario_controls": "pass",
+            "peaks": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ],
+            "reference": [
+              100,
+              80,
+              120,
+              60
+            ],
+            "LOT_A": [
+              99,
+              81,
+              118,
+              60
+            ],
+            "LOT_B": [
+              98,
+              79,
+              36,
+              59
+            ],
+            "compound_identities": null
+          },
+          "claim": {
+            "marketed": "TRAIN-CAPSULE-P",
+            "cited_intervention": "TRAIN-OIL-Q",
+            "comparability_demonstrated": false
+          },
+          "blank_and_standard_checks": "pass stipulated in dossier",
+          "sampling": "one virtual aliquot per batch; representativeness not established",
+          "real_plant_fingerprint": false
+        }
+      },
+      "source_ids": [
+        "SRC-WHO",
+        "SRC-ICH",
+        "SRC-LEAF",
+        "SRC-OIL"
+      ]
+    }
+  ]
+}

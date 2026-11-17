@@ -1,0 +1,318 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PHY TOLAB complete quest authoring bundle",
+  "type": "object",
+  "required": [
+    "id",
+    "version",
+    "date",
+    "status",
+    "institute_name",
+    "atlas_compatibility",
+    "departments",
+    "competencies",
+    "sources",
+    "quests"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "date": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "institute_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "atlas_compatibility": {
+      "type": "string",
+      "minLength": 1
+    },
+    "departments": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "competencies": {
+      "type": "array"
+    },
+    "sources": {
+      "type": "array"
+    },
+    "quests": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "department",
+          "mechanic",
+          "plant_context_ids",
+          "competencies",
+          "prerequisites",
+          "target_minutes",
+          "scenario",
+          "player_actions",
+          "dataset",
+          "correct_reasoning",
+          "rubric_checks",
+          "error_feedback",
+          "critical_errors",
+          "transfer_variant",
+          "source_ids",
+          "reward",
+          "mastery",
+          "rubric"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^Q(0[1-9]|1[0-5])$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "department": {
+            "enum": [
+              "Botanical Identification",
+              "Pharmacognosy",
+              "Phytochemistry"
+            ]
+          },
+          "mechanic": {
+            "enum": [
+              "specimen-workbench",
+              "analytical-workbench",
+              "research-dossier"
+            ]
+          },
+          "plant_context_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "competencies": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "prerequisites": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "target_minutes": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "scenario": {
+            "type": "string",
+            "minLength": 1
+          },
+          "player_actions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "dataset": {
+            "type": "object",
+            "required": [
+              "id",
+              "version",
+              "origin",
+              "not_measured",
+              "species_diagnostic",
+              "review_status",
+              "reviewer",
+              "source_ids",
+              "data"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1
+              },
+              "origin": {
+                "type": "string",
+                "minLength": 1
+              },
+              "not_measured": {
+                "const": true
+              },
+              "species_diagnostic": {
+                "const": false
+              },
+              "review_status": {
+                "type": "string",
+                "minLength": 1
+              },
+              "reviewer": {
+                "type": "null"
+              },
+              "source_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "data": {
+                "type": "object"
+              }
+            },
+            "additionalProperties": false
+          },
+          "correct_reasoning": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "rubric_checks": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 5,
+            "maxItems": 6
+          },
+          "error_feedback": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "critical_errors": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "transfer_variant": {
+            "type": "object",
+            "required": [
+              "id",
+              "data",
+              "required_conclusion"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "data": {
+                "type": "object"
+              },
+              "required_conclusion": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": false
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "reward": {
+            "type": "object"
+          },
+          "mastery": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rubric": {
+            "type": "object",
+            "required": [
+              "scale",
+              "maximum",
+              "pass_score",
+              "minimum_per_criterion",
+              "critical_flags_block_mastery",
+              "evaluator"
+            ],
+            "properties": {
+              "scale": {
+                "const": [
+                  0,
+                  1,
+                  2
+                ]
+              },
+              "maximum": {
+                "enum": [
+                  10,
+                  12
+                ]
+              },
+              "pass_score": {
+                "enum": [
+                  8,
+                  10
+                ]
+              },
+              "minimum_per_criterion": {
+                "enum": [
+                  0,
+                  1
+                ]
+              },
+              "critical_flags_block_mastery": {
+                "const": true
+              },
+              "evaluator": {
+                "enum": [
+                  "standard-five-checks",
+                  "capstone-six-dimensions"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
